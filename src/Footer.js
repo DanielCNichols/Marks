@@ -5,7 +5,7 @@ import './Footer.css';
 export default function Footer() {
   return (
     <div className="footer">
-      <a href="www.github.com/">
+      <a href="https://github.com/DanielCNichols/Marks">
         <FaGithub></FaGithub>
       </a>
       <span>2020</span>
