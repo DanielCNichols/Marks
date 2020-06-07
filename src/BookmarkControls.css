@@ -1,0 +1,26 @@
+.sort {
+  width: 20%;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: rgb(64, 65, 64);
+  border: 2px solid rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, .8);
+  font-family: inherit;
+}
+
+
+.sort-select {
+  height: 35px;
+  border: 2px solid rgba(255, 255, 255, .5);
+  font-family: inherit;
+  border-radius: 0;
+  background-color: rgb(64, 65, 64);
+  color: rgba(255, 255, 255, .8)
+}
+
+
+@media screen and (min-width: 450px) {
+  .sort {
+    width: 75px;
+  }
+}

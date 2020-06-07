@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+.App {
+  text-align: center;
+  position: absolute;
+  left: 5%;
+  font-family: 'Source Code Pro', monospace;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: auto;
+  min-height: 90vh;
+  width: 90%;
+  margin: 10px auto 50px auto;
+  color: #23a840;
+  border-radius: 6px;
+}
+body {
+  background-image: url('Bg.png');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+* a {
+  text-decoration: none;
+}
+
+* a:visited {
+  color: inherit;
+}
+
+* svg,
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  color: rgb(230, 0, 125);
+}
+
+header:first-child {
+  color: #68cffa;
+}
+
+main {
+  display: grid;
+  width: 90%;
+  height: auto;
+  margin: 10px auto;
+}
+
+.error {
+  color: red;
+  grid-row-start: 5;
+  grid-column-start: span 2;
+}
+
+.add-button {
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: 23a840;
+  font-size: 3.5em;
+  position: fixed;
+  bottom: 15%;
+  right: 10%;
+  animation-name: stretch;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+@keyframes stretch {
+  100% {
+    color: #23f84f;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: ease-in;
+    transform: scale(1.2);
+  }
+}
+
+body,
+html {
+  height: 100%;
+}
+
+@media screen and (min-width: 450px) {
+  main {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: 1fr 1fr;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .control {
+    grid-column-start: 1;
+    display: flex;
+    justify-content: left;
+  }
+
+  .list {
+    grid-column-start: 2;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .App {
+    width: 60%;
+    min-width: 620px;
+    position: initial;
+    margin: 0 auto;
+  }
+
+  .main {
+    display: grid;
+  }
+
+  .control {
+    justify-content: center;
+  }
+
+  .add-button {
+    position: inherit;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    margin: 25px auto;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .plusButton {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+
+  .add-button > svg {
+    margin: auto 0;
+  }
+}

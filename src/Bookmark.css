@@ -1,0 +1,348 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+.tooltiptext {
+  display: none;
+}
+
+.bookmark-item {
+  width: 100%;
+  display: grid;
+  border: 2px solid white;
+  grid-template-columns: 43% 43% 14%;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: #252525;
+  height: auto;
+  margin: 10px auto;
+  padding: 0;
+}
+
+.head {
+  grid-column-start: span 2;
+  grid-row-start: 1;
+  font-size: 1.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+}
+
+.head h3 {
+  margin: 0;
+  padding: 5px;
+}
+
+.rating {
+  grid-column-start: span 2;
+  grid-row-start: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.item-controls-container {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: span 3;
+  margin-left: auto;
+  width: 100%;
+}
+
+.item-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #404140;
+  width: auto;
+  margin: 0 auto;
+}
+
+.item-controls svg {
+  margin: 10px 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2em;
+  padding: 5px;
+}
+
+.item-expand {
+  grid-row-start: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: left;
+  width: 100%;
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.item-expand svg {
+  margin: 0 10px;
+  font-size: 1.3em;
+}
+
+.bookmark-item-expanded {
+  width: 100%;
+  display: grid;
+  border: 2px solid white;
+  grid-template-columns: 1fr, 1fr;
+  grid-template-rows: 1fr 1fr 1fr 20%;
+  background-color: #252525;
+  height: auto;
+  margin: 10px auto;
+}
+
+.head-expanded {
+  grid-row-start: 1;
+  word-wrap: break-word;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.head-expanded h3 {
+  margin: 0;
+}
+
+.less {
+  color: #23a840;
+}
+
+.rating-expanded {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.desc {
+  grid-row-start: 2;
+  grid-column-start: span 2;
+  padding: 0 10px;
+  word-wrap: break-word;
+}
+
+.url {
+  grid-row-start: 3;
+  grid-column-start: span 2;
+  padding: 0 10px;
+  word-wrap: break-word;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.item-controls-container-expand {
+  grid-row-start: 4;
+  grid-column-start: span 2;
+  border-top: 1px solid white;
+  display: flex;
+  align-items: center;
+  background-color: #404140;
+  width: 100%;
+}
+
+.item-controls-container-expand svg {
+  font-size: 1.3em;
+}
+
+.item-controls-expand {
+  width: 100%;
+  display: flex;
+  color: rgba(255, 255, 255, 0.8);
+  justify-content: space-around;
+}
+
+.less {
+  display: flex;
+  align-items: center;
+}
+
+.bookmark-form {
+  border: 2px solid white;
+  display: grid;
+  grid-template-rows: 1fr repeat(5);
+  grid-template-columns: 1fr 1fr;
+  background-color: #252525;
+  padding: 0 10px;
+  margin: 10px 0;
+}
+
+.bookmark-form select {
+  width: 100%;
+  padding: 5px;
+  height: 30px;
+  margin: 5px;
+}
+
+.bookmark-form label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  color: #68cffa;
+  text-align: left;
+}
+
+.edit-form-url {
+  grid-row-start: 2;
+  grid-column-start: span 2;
+}
+
+.edit-form-desc {
+  grid-row-start: 3;
+  grid-column-start: span 2;
+}
+
+.edit-form-controls {
+  grid-row-start: 4;
+  grid-column-start: span 2;
+}
+
+input,
+textarea {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.edit-form-controls {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.edit-form-controls button {
+  background: transparent;
+  border: none;
+  font-size: 1.2em;
+}
+
+.edit-form-controls button > span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  display: block;
+  width: auto;
+  margin: 0 auto;
+}
+
+.save {
+  color: #23a840;
+}
+
+.cancel {
+  color: red;
+}
+
+@media screen and (min-width: 800px) {
+  .bookmark-item {
+    width: 85%;
+    min-width: 355px;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .bookmark-item-expanded {
+    width: 85%;
+    min-width: 355px;
+  }
+
+  .item-controls-container {
+    grid-column-start: 2;
+    grid-row-start: 3;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #404140;
+  }
+
+  .item-controls {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #404140;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    height: 100%;
+  }
+
+  .item-controls svg {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+  }
+
+  .tooltip {
+    position: relative;
+    width: auto;
+    height: 50%;
+  }
+
+  .tooltiptext {
+    visibility: hidden;
+    width: auto;
+    display: flex;
+    background-color: black;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    left: -70%;
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay: 0.5s;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 3px 5px;
+    opacity: 1;
+  }
+
+  .item-controls div:nth-child(2) > svg:hover {
+    color: red;
+  }
+
+  .item-controls-expand div:nth-child(3) > svg:hover {
+    color: red;
+  }
+
+  .item-controls div:nth-child(3) > a:hover svg {
+    color: #68cffa;
+  }
+
+  .item-controls-expand div:nth-child(4) > a:hover svg {
+    color: #68cffa;
+  }
+
+  .item-controls svg:nth-child(1):hover {
+    color: #23a841;
+  }
+
+  .item-controls-expand div:nth-child(2) > svg:hover {
+    color: #23a841;
+  }
+
+  .item-expand {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background-color: #404140;
+  }
+
+  .item-expand svg {
+    margin: 0;
+  }
+}
