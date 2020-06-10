@@ -9,13 +9,15 @@
 
 .add-form legend {
   color: #68cffa;
-  font-size: 1.1em;
+  font-size: 1.3em;
+  font-weight: 800;
 }
 
 .add-form label {
   display: block;
   margin: 10px 0;
   color: #23a840;
+  font-weight: 600;
 }
 .add-form input[type='text'],
 select {
@@ -50,11 +52,10 @@ select {
   margin: 0 auto;
 }
 
-.add-form textarea {
+.add-form-desc > textarea {
   width: 175px;
-  height: auto;
   display: block;
-  margin: 10px 0;
+  margin: 10px auto;
 }
 
 .add-form-controls {
@@ -78,15 +79,10 @@ select {
   }
 
   .add-form-controls {
-    width: 100%;
+    width: 70%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     align-items: space-between;
-  }
-
-  .add-form-desc > textarea {
-    margin: 10px auto;
-    display: block;
   }
 }
