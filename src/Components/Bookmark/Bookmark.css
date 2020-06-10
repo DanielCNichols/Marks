@@ -46,11 +46,13 @@
 }
 
 .item-controls-container {
+  display: flex;
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: span 3;
   margin-left: auto;
   width: 100%;
+  background-color: #404140;
 }
 
 .item-controls {
