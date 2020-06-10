@@ -1,5 +1,5 @@
 import React from 'react';
-import Bookmark from './Bookmark';
+import Bookmark from '../Bookmark/Bookmark';
 
 export default function BookmarksList(props) {
   const items = props.bookmarks;

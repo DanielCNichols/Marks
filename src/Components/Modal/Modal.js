@@ -1,5 +1,5 @@
 import React from 'react';
-import Overlay from './Overlay';
+import Overlay from '../Overlay/Overlay';
 import './Modal.css';
 
 export default function Modal(props) {

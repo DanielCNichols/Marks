@@ -8,8 +8,8 @@ import {
   MdCancel,
 } from 'react-icons/md';
 import { TiArrowForward } from 'react-icons/ti';
-import ApiService from './api-service';
-import RatingSpan from './RatingSpan';
+import ApiService from '../../Services/api-service';
+import RatingSpan from '../RatingSpan/RatingSpan';
 import './Bookmark.css';
 
 export default class Bookmark extends React.Component {

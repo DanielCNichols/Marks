@@ -1,5 +1,5 @@
 import React from 'react';
-import ApiService from './api-service';
+import ApiService from '../../Services/api-service';
 import './AddForm.css';
 import { MdCancel, MdSave } from 'react-icons/md';
 
@@ -7,8 +7,6 @@ export default class AddForm extends React.Component {
   state = {
     error: null,
   };
-
-  //Try to make this a cool popout.
 
   handleSubmit = e => {
     e.preventDefault();

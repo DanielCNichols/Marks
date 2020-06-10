@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import ApiService from './api-service';
-import BookmarkControls from './BookmarkControls';
-import BookmarksList from './BookmarksList';
-import Button from './Button';
-import AddForm from './AddForm';
-import Footer from './Footer';
-import Modal from './Modal';
+import ApiService from './Services/api-service';
+import BookmarkControls from './Components/BookmarkControls/BookmarkControls';
+import BookmarksList from './Components/BookmarkList/BookmarksList';
+import Button from './Components/Button/Button';
+import AddForm from './Components/AddForm/AddForm';
+import Footer from './Components/Footer/Footer';
+import Modal from './Components/Modal/Modal';
 
 class App extends React.Component {
   state = {

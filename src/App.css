@@ -13,7 +13,7 @@
   border-radius: 6px;
 }
 body {
-  background-image: url('Bg.png');
+  background-image: url('./Bg.png');
   background-size: cover;
   background-attachment: fixed;
 }
