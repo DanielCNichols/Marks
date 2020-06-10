@@ -104,23 +104,6 @@ html {
   .list {
     grid-column-start: 2;
   }
-}
-
-@media screen and (min-width: 800px) {
-  .App {
-    width: 60%;
-    min-width: 620px;
-    position: initial;
-    margin: 0 auto;
-  }
-
-  .main {
-    display: grid;
-  }
-
-  .control {
-    justify-content: center;
-  }
 
   .add-button {
     position: inherit;
@@ -138,5 +121,22 @@ html {
 
   .add-button > svg {
     margin: auto 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .App {
+    width: 60%;
+    min-width: 620px;
+    position: initial;
+    margin: 0 auto;
+  }
+
+  .main {
+    display: grid;
+  }
+
+  .control {
+    justify-content: center;
   }
 }
