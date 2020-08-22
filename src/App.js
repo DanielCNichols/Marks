@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import ApiService from './Services/api-service';
 import BookmarkControls from './Components/BookmarkControls/BookmarkControls';
@@ -8,113 +8,101 @@ import AddForm from './Components/AddForm/AddForm';
 import Footer from './Components/Footer/Footer';
 import Modal from './Components/Modal/Modal';
 
-class App extends React.Component {
-  state = {
-    bookmarks: [],
-    editing: false,
-    adding: false,
-    error: null,
-  };
+function App() {
+  const [bookmarks, setBookmarks] = useState([]);
+  const [editing, setEditing] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState(null);
 
-  componentDidMount() {
+  //IDEA: Pass in filter value (or null, if initial load) to get bookmarks. Backend handles filtering through conditions in the route.
+  useEffect(() => {
     ApiService.getBookmarks()
       .then(res => {
-        this.setState({ bookmarks: res });
+        setBookmarks(res);
       })
       .catch(error => {
-        this.setState({ error: error });
+        setError(error);
       });
-  }
+  }, [filter]);
 
-  addToggle = () => {
-    this.setState({ adding: !this.state.adding });
+  const addToggle = () => {
+    setAdding(!adding);
   };
 
-  editToggle = () => {
-    this.setState({ editing: !this.state.editing });
+  const addBookmark = newBookmark => {
+    let newList = [...bookmarks, newBookmark];
+    setBookmarks(newList);
   };
 
-  addBookmark = newBookmark => {
-    let newList = [...this.state.bookmarks, newBookmark];
-    this.setState({ bookmarks: newList });
+  const updateBookmark = newBookmark => {
+    let index = bookmarks.findIndex(bm => bm.id === newBookmark.id);
+    let newList = [...bookmarks];
+    newList[index] = newBookmark;
+    setBookmarks(newList);
   };
 
-  removeBookmark = id => {
-    let newList = this.state.bookmarks.filter(bm => bm.id !== id);
-    this.setState({ bookmarks: newList });
+  const removeBookmark = id => {
+    let newList = bookmarks.filter(bm => bm.id !== id);
+    setBookmarks(newList);
   };
 
-  deleteBookmark = id => {
+  const deleteBookmark = id => {
     ApiService.deleteBookmark(id)
-      .then(this.removeBookmark(id))
-      .catch(error => this.setState({ error: error.message }));
+      .then(removeBookmark(id))
+      .catch(error => setError(error));
   };
 
-  sortBookmarks = value => {
-    let { bookmarks } = this.state;
+  const sortBookmarks = value => {
     value === 'asc'
-      ? this.setState({
-          bookmarks: bookmarks.sort((a, b) => a.rating - b.rating),
-        })
-      : this.setState({
-          bookmarks: bookmarks.sort((a, b) => b.rating - a.rating),
-        });
+      ? setBookmarks(bookmarks.sort((a, b) => a.rating - b.rating))
+      : setBookmarks(bookmarks.sort((a, b) => b.rating - a.rating));
   };
 
-  renderError() {
-    const { error } = this.state;
-    return (
-      <>
-        {error ? (
-          <div className="error" aria-live="assertive">
-            {error.message}
-          </div>
-        ) : null}
-      </>
-    );
-  }
+  //TODO: Filter by rating, search bar (good chance to use debounce!)
 
-  render() {
-    return (
-      <div className="App" aria-live="polite">
-        <header>
-          <h1>:Marks</h1>
-          <p>Bookmarking as simple as :q!</p>
-        </header>
-        <main aria-live="polite">
-          <div className="control">
-            <BookmarkControls sort={this.sortBookmarks} />
+  //This will filter by value and up...
+  const filterBookmarks = value => {
+    //Should trigger a refetch of the bookmarks with useEffect();
+    //Handle filtering on backend.
+    setFilter(value);
+  };
+
+  const clearFilter = () => {
+    setFilter(null);
+  };
+
+  return (
+    <div className="App" aria-live="polite">
+      <header>
+        <h1>:Marks</h1>
+        <p>Bookmarking as simple as :q!</p>
+      </header>
+      <main aria-live="polite">
+        <div className="control">
+          <BookmarkControls sort={sortBookmarks} />
+        </div>
+        <div className="list">
+          <div className="add">
+            {adding === true ? (
+              <Modal>
+                <AddForm addToggle={addToggle} addBookmark={addBookmark} />
+              </Modal>
+            ) : null}
           </div>
-          <div className="list">
-            <div className="add">
-              {this.state.adding === true ? (
-                <Modal>
-                  <AddForm
-                    addToggle={this.addToggle}
-                    addBookmark={this.addBookmark}
-                  />
-                </Modal>
-              ) : null}
-            </div>
-            {this.state.error ? (
-              this.renderError()
-            ) : (
-              <BookmarksList
-                editToggle={this.editToggle}
-                bookmarks={this.state.bookmarks}
-                deleteBm={this.deleteBookmark}
-                edit={this.updateBookmark}
-              />
-            )}
-          </div>
-          {!this.state.adding && !this.state.editing ? (
-            <Button className="add-button" toggleAdd={this.addToggle}></Button>
-          ) : null}
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+          <BookmarksList
+            bookmarks={bookmarks}
+            updateBookmark={updateBookmark}
+            deleteBm={deleteBookmark}
+          />
+        </div>
+        {!adding && !editing ? (
+          <Button className="add-button" toggleAdd={addToggle}></Button>
+        ) : null}
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

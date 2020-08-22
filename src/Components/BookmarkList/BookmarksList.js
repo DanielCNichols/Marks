@@ -3,7 +3,7 @@ import Bookmark from '../Bookmark/Bookmark';
 
 export default function BookmarksList(props) {
   const items = props.bookmarks;
-  const { editToggle, deleteBm, edit } = props;
+  const { editToggle, deleteBm, updateBookmark } = props;
   return (
     <div>
       {!items.length ? (
@@ -16,9 +16,8 @@ export default function BookmarksList(props) {
           <Bookmark
             key={item.id}
             bookmark={item}
-            editBm={edit}
+            updateBookmark={updateBookmark}
             deleteBm={deleteBm}
-            editToggle={editToggle}
           />
         ))
       )}
