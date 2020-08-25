@@ -21,7 +21,7 @@ export default function AddForm(props) {
         props.addBookmark(res);
         props.addToggle();
       })
-      .catch(error => this.setState({ error: error }));
+      .catch(error => setError(error));
   };
 
   const { addToggle } = props;

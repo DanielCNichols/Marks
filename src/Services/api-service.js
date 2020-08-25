@@ -1,10 +1,12 @@
 import config from '../config';
+import TokenService from './tokenService';
 
 const ApiService = {
   getBookmarks() {
     return fetch(`${config.API_ENDPOINT}/bookmarks`, {
       headers: {
         'content-type': 'application/json',
+        Authorization: TokenService.getAuthToken(),
       },
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()

@@ -7,6 +7,8 @@ import Button from './Components/Button/Button';
 import AddForm from './Components/AddForm/AddForm';
 import Footer from './Components/Footer/Footer';
 import Modal from './Components/Modal/Modal';
+import { Route, Switch } from 'react-router-dom';
+import Login from './Components/Loginform/LoginForm';
 
 function App() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -74,6 +76,9 @@ function App() {
 
   return (
     <div className="App" aria-live="polite">
+      <Switch>
+        <Route exact path="/login" component={Login} />
+      </Switch>
       <header>
         <h1>:Marks</h1>
         <p>Bookmarking as simple as :q!</p>
