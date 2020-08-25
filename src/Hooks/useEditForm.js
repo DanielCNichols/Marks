@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import isUrl from 'isurl';
 //* Our various rules for validation live here
 const validationRules = values => {
   let errors = {};
@@ -9,6 +9,13 @@ const validationRules = values => {
   if (!values.title) {
     errors.title = 'Title is required';
   }
+
+  try {
+    new URL(values.url);
+  } catch (error) {
+    errors.urlFormat = 'URL must be in http://www.domain.com format';
+  }
+
   return errors;
 };
 
@@ -20,22 +27,22 @@ const useEditForm = (bookmark, callback, validation) => {
     title: bookmark.title,
   });
 
-  const [errors, setErrors] = useState({});
+  const [inputErrors, setInputErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = event => {
     if (event) {
       event.preventDefault();
-      setErrors(validation(inputs));
+      setInputErrors(validation(inputs));
       setIsSubmitting(true);
     }
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback(inputs);
+    if (Object.keys(inputErrors).length === 0 && isSubmitting) {
+      callback(bookmark._id, inputs);
     }
-  }, [errors]);
+  }, [inputErrors]);
 
   const handleChange = event => {
     event.persist();
@@ -49,7 +56,7 @@ const useEditForm = (bookmark, callback, validation) => {
     inputs,
     handleChange,
     handleSubmit,
-    errors,
+    inputErrors,
   };
 };
 

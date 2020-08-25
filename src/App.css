@@ -13,7 +13,7 @@
   border-radius: 6px;
 }
 body {
-  background-image: url('./Bg.png');
+  background-color: rgba(58, 58, 58, 0.904);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -89,7 +89,6 @@ html {
 @media screen and (min-width: 450px) {
   main {
     display: grid;
-    grid-template-columns: 4fr 6fr;
     grid-template-rows: 1fr 1fr;
     width: 90%;
     margin: 0 auto;

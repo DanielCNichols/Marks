@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdSave, MdCancel } from 'react-icons/md';
 import { useEditForm, validationRules } from '../../Hooks/useEditForm';
-
+import ApiService from '../../Services/api-service';
 //TODO: Make a hook to handle the edit
 //TODO: Fix the rating select options
 
-export default function EditForm({ bookmark, handleEditSubmit, handleCancel }) {
-  const { inputs, handleChange, handleSubmit, errors } = useEditForm(
+export default function EditForm({
+  bookmark,
+  handleCancel,
+  updateBookmark,
+  toggleEdit,
+}) {
+  const [error, setError] = useState(null);
+
+  const { inputs, handleChange, handleSubmit, inputErrors } = useEditForm(
     bookmark,
-    edit,
+    handleEditSubmit,
     validationRules
   );
 
-  function edit(inputs) {
-    handleEditSubmit(bookmark._id, inputs);
+  async function handleEditSubmit(id, updated) {
+    try {
+      let res = await ApiService.editBookmark(123, updated);
+      updateBookmark(res);
+      toggleEdit();
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    }
   }
 
   return (
@@ -56,8 +70,23 @@ export default function EditForm({ bookmark, handleEditSubmit, handleCancel }) {
         Description
         <textarea name="desc" value={inputs.desc} onChange={handleChange} />
       </label>
+
+      {inputErrors && (
+        <>
+          {Object.keys(inputErrors).map((e, idx) => {
+            return (
+              <p style={{ color: 'white' }} key={idx}>
+                {inputErrors[e]}
+              </p>
+            );
+          })}
+        </>
+      )}
+
+      {error && <p className="error">{error.message}</p>}
+
       <div className="edit-form-controls">
-        <button className="cancel" type="reset" onClick={handleCancel}>
+        <button className="cancel" type="reset" onClick={toggleEdit}>
           <MdCancel />
           <span>Cancel</span>
         </button>

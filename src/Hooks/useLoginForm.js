@@ -6,7 +6,7 @@ const validationRules = values => {
     errors.url = 'Username is required';
   }
   if (!values.password) {
-    errors.title = 'Password is required';
+    errors.password = 'Password is required';
   }
   return errors;
 };
@@ -17,22 +17,22 @@ const useLoginForm = (callback, validation) => {
     password: '',
   });
 
-  const [errors, setErrors] = useState({});
+  const [inputErrors, setInputErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = event => {
     if (event) {
       event.preventDefault();
-      setErrors(validation(inputs));
+      setInputErrors(validation(inputs));
       setIsSubmitting(true);
     }
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
+    if (Object.keys(inputErrors).length === 0 && isSubmitting) {
       callback(inputs);
     }
-  }, [errors]);
+  }, [inputErrors]);
 
   const handleChange = event => {
     event.persist();
@@ -46,7 +46,7 @@ const useLoginForm = (callback, validation) => {
     inputs,
     handleChange,
     handleSubmit,
-    errors,
+    inputErrors,
   };
 };
 

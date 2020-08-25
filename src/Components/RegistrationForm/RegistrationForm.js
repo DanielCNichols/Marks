@@ -8,10 +8,12 @@ import TokenService from '../../Services/tokenService';
 
 export default function RegistrationForm(props) {
   const [error, setError] = useState(null);
-  const { inputs, handleChange, handleSubmit, errors } = useRegistrationForm(
-    handleRegister,
-    validationRules
-  );
+  const {
+    inputs,
+    handleChange,
+    handleSubmit,
+    inputErrors,
+  } = useRegistrationForm(handleRegister, validationRules);
 
   async function handleRegister(inputs) {
     try {
@@ -25,7 +27,7 @@ export default function RegistrationForm(props) {
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
-        <legend>Login</legend>
+        <legend>Sign Up</legend>
         <div className="form-element">
           <label htmlFor="username">Username</label>
           <input
@@ -56,6 +58,32 @@ export default function RegistrationForm(props) {
             value={inputs.confirmPass}
           />
         </div>
+
+        {inputErrors && (
+          <>
+            {Object.keys(inputErrors).map((e, idx) => {
+              return (
+                <p style={{ color: 'white' }} key={idx}>
+                  {inputErrors[e]}
+                </p>
+              );
+            })}
+          </>
+        )}
+
+        {error && (
+          <>
+            {Object.keys(error).map((e, idx) => {
+              return (
+                <p style={{ color: 'white' }} key={idx}>
+                  {error[e]}
+                </p>
+              );
+            })}
+          </>
+        )}
+
+        {/* {error && <p className="error">{error}</p>} */}
 
         <button type="submit">Sign up</button>
       </fieldset>

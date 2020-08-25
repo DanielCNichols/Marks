@@ -27,22 +27,22 @@ const useRegistrationForm = (callback, validation) => {
     confirmPass: '',
   });
 
-  const [errors, setErrors] = useState({});
+  const [inputErrors, setInputErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = event => {
     if (event) {
       event.preventDefault();
-      setErrors(validation(inputs));
+      setInputErrors(validation(inputs));
       setIsSubmitting(true);
     }
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
+    if (Object.keys(inputErrors).length === 0 && isSubmitting) {
       callback(inputs);
     }
-  }, [errors]);
+  }, [inputErrors]);
 
   const handleChange = event => {
     event.persist();
@@ -56,7 +56,7 @@ const useRegistrationForm = (callback, validation) => {
     inputs,
     handleChange,
     handleSubmit,
-    errors,
+    inputErrors,
   };
 };
 

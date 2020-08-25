@@ -5,7 +5,7 @@ import TokenService from '../../Services/tokenService';
 
 export default function LoginForm(props) {
   const [error, setError] = useState(null);
-  const { inputs, handleChange, handleSubmit, errors } = useLoginForm(
+  const { inputs, handleChange, handleSubmit, inputErrors } = useLoginForm(
     handleLogin,
     validationRules
   );
@@ -14,8 +14,8 @@ export default function LoginForm(props) {
     try {
       let { token } = await AuthApiService.postLogin(inputs);
       TokenService.saveAuthToken(token);
-      props.history.push('/');
-    } catch (error) {
+      props.history.push('/list');
+    } catch ({ error }) {
       setError(error);
     }
   }
@@ -44,6 +44,20 @@ export default function LoginForm(props) {
             value={inputs.password}
           />
         </div>
+
+        {inputErrors && (
+          <>
+            {Object.keys(inputErrors).map((e, idx) => {
+              return (
+                <p style={{ color: 'white' }} key={idx}>
+                  {inputErrors[e]}
+                </p>
+              );
+            })}
+          </>
+        )}
+
+        {error && <p className="error">{error}</p>}
 
         <button type="submit">Login</button>
       </fieldset>

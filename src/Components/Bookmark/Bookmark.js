@@ -20,16 +20,7 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
     setExpanded(!expanded);
   };
 
-  const handleEditSubmit = (id, updated) => {
-    ApiService.editBookmark(id, updated)
-      .then(res => {
-        setEditing(false);
-        updateBookmark(res);
-      })
-      .catch(error => setError(error));
-  };
-
-  const handleEdit = () => {
+  const toggleEdit = () => {
     setEditing(!editing);
   };
 
@@ -59,8 +50,8 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
           <Modal>
             <EditForm
               bookmark={bookmark}
-              handleEditSubmit={handleEditSubmit}
-              handleCancel={handleCancel}
+              updateBookmark={updateBookmark}
+              toggleEdit={toggleEdit}
             />
           </Modal>
         )}
@@ -73,7 +64,7 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
         <div className="item-controls-container">
           <div className="item-controls">
             <div className="tooltip">
-              <MdEdit onClick={handleEdit} />
+              <MdEdit onClick={toggleEdit} />
               <span className="tooltiptext">Edit</span>
             </div>
             <div className="tooltip delete">
