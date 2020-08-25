@@ -14,6 +14,7 @@ const ApiService = {
   },
 
   postBookmark(bookmark) {
+    console.log('this is the bookmark', bookmark);
     return fetch(`${config.API_ENDPOINT}/bookmarks`, {
       method: 'POST',
       headers: {

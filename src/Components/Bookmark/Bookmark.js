@@ -7,7 +7,7 @@ import './Bookmark.css';
 import Modal from '../Modal/Modal';
 import EditForm from '../EditForm/EditForm';
 
-export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
+export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
   const [expanded, setExpanded] = useState(false);
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState(null);
@@ -31,6 +31,12 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
 
   const handleEdit = () => {
     setEditing(!editing);
+  };
+
+  const deleteBookmark = id => {
+    ApiService.deleteBookmark(id)
+      .then(removeBookmark(id))
+      .catch(error => setError(error));
   };
 
   const renderError = () => {
@@ -73,7 +79,7 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
             <div className="tooltip delete">
               <MdDelete
                 onClick={() => {
-                  deleteBm(_id);
+                  deleteBookmark(_id);
                 }}
               />
               <span className="tooltiptext">Delete</span>
@@ -129,7 +135,7 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
             <div className="tooltip">
               <MdDelete
                 onClick={() => {
-                  deleteBm(_id);
+                  deleteBookmark(_id);
                 }}
               />
               <span className="tooltiptext">Delete</span>

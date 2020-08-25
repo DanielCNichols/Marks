@@ -6,6 +6,7 @@ import { MdCancel, MdSave } from 'react-icons/md';
 export default function AddForm(props) {
   const [error, setError] = useState(null); // Do I need to make another piece of state here? Could there be a"global error" in this case?
 
+  console.log(props);
   const handleSubmit = e => {
     e.preventDefault();
     const { title, url, desc, rating } = e.target;
@@ -15,6 +16,8 @@ export default function AddForm(props) {
       desc: desc.value,
       rating: rating.value,
     };
+
+    console.log('running');
 
     ApiService.postBookmark(newBookmark)
       .then(res => {
