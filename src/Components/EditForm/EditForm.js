@@ -13,7 +13,7 @@ export default function EditForm({ bookmark, handleEditSubmit, handleCancel }) {
   );
 
   function edit(inputs) {
-    handleEditSubmit(bookmark.id, inputs);
+    handleEditSubmit(bookmark._id, inputs);
   }
 
   return (

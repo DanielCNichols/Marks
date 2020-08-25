@@ -7,10 +7,6 @@ import './Bookmark.css';
 import Modal from '../Modal/Modal';
 import EditForm from '../EditForm/EditForm';
 
-/* //! This is a lot. Lets refactor to:
-    1. Get the edit form in its own component
-    3. Split up expand, collapsed into easier to read blocks. */
-
 export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
   const [expanded, setExpanded] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -26,9 +22,9 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
 
   const handleEditSubmit = (id, updated) => {
     ApiService.editBookmark(id, updated)
-      .then(() => {
+      .then(res => {
         setEditing(false);
-        updateBookmark({ ...updated, id: id });
+        updateBookmark(res);
       })
       .catch(error => setError(error));
   };
@@ -50,7 +46,7 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
   };
 
   const renderCollapsed = () => {
-    let { title, rating, id, url } = bookmark;
+    let { title, rating, _id, url } = bookmark;
     return (
       <section className="bookmark-item">
         {editing && (
@@ -77,7 +73,7 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
             <div className="tooltip delete">
               <MdDelete
                 onClick={() => {
-                  deleteBm(id);
+                  deleteBm(_id);
                 }}
               />
               <span className="tooltiptext">Delete</span>
@@ -104,7 +100,7 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
   };
 
   const renderExpanded = () => {
-    const { id, title, desc, rating, url } = bookmark;
+    const { _id, title, desc, rating, url } = bookmark;
 
     return (
       <section className="bookmark-item-expanded">
@@ -133,7 +129,7 @@ export default function Bookmark({ bookmark, deleteBm, updateBookmark }) {
             <div className="tooltip">
               <MdDelete
                 onClick={() => {
-                  deleteBm(id);
+                  deleteBm(_id);
                 }}
               />
               <span className="tooltiptext">Delete</span>

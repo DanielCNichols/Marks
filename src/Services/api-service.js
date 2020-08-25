@@ -13,25 +13,27 @@ const ApiService = {
     );
   },
 
-  postBookmark(newBookmark) {
+  postBookmark(bookmark) {
     return fetch(`${config.API_ENDPOINT}/bookmarks`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        Authorization: TokenService.getAuthToken(),
       },
-      body: JSON.stringify(newBookmark),
+      body: JSON.stringify({ bookmark }),
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
 
-  editBookmark(id, newBookmark) {
+  editBookmark(id, updated) {
     return fetch(`${config.API_ENDPOINT}/bookmarks/${id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
+        Authorization: TokenService.getAuthToken(),
       },
-      body: JSON.stringify(newBookmark),
+      body: JSON.stringify({ updated }),
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
@@ -42,6 +44,7 @@ const ApiService = {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
+        Authorization: TokenService.getAuthToken(),
       },
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : undefined

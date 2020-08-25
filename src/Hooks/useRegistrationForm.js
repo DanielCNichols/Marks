@@ -40,10 +40,7 @@ const useRegistrationForm = (callback, validation) => {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log('running callback');
       callback(inputs);
-    } else {
-      console.log('errors present');
     }
   }, [errors]);
 

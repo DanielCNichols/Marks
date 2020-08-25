@@ -39,14 +39,14 @@ function App() {
   };
 
   const updateBookmark = newBookmark => {
-    let index = bookmarks.findIndex(bm => bm.id === newBookmark.id);
+    let index = bookmarks.findIndex(bm => bm._id === newBookmark._id);
     let newList = [...bookmarks];
     newList[index] = newBookmark;
     setBookmarks(newList);
   };
 
   const removeBookmark = id => {
-    let newList = bookmarks.filter(bm => bm.id !== id);
+    let newList = bookmarks.filter(bm => bm._id !== id);
     setBookmarks(newList);
   };
 
