@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { useLoginForm, validationRules } from '../../Hooks/useLoginForm';
+import {
+  useRegistrationForm,
+  validationRules,
+} from '../../Hooks/useRegistrationForm';
 import AuthApiService from '../../Services/authService';
 import TokenService from '../../Services/tokenService';
 
-export default function LoginForm(props) {
+export default function RegistrationForm(props) {
   const [error, setError] = useState(null);
-  const { inputs, handleChange, handleSubmit, errors } = useLoginForm(
-    handleLogin,
+  const { inputs, handleChange, handleSubmit, errors } = useRegistrationForm(
+    handleRegister,
     validationRules
   );
 
-  async function handleLogin(inputs) {
+  async function handleRegister(inputs) {
     try {
-      let { token } = await AuthApiService.postLogin(inputs);
-      TokenService.saveAuthToken(token);
-      props.history.push('/');
+      await AuthApiService.postUser(inputs);
+      props.history.push('/login');
     } catch (error) {
       setError(error);
     }
@@ -44,8 +46,18 @@ export default function LoginForm(props) {
             value={inputs.password}
           />
         </div>
+        <div className="form-element">
+          <label htmlFor="confirmPass">Password</label>
+          <input
+            type="text"
+            name="confirmPass"
+            id="confirmPass"
+            onChange={handleChange}
+            value={inputs.confirmPass}
+          />
+        </div>
 
-        <button type="submit">Login</button>
+        <button type="submit">Sign up</button>
       </fieldset>
     </form>
   );

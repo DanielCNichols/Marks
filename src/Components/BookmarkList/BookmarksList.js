@@ -14,7 +14,7 @@ export default function BookmarksList(props) {
       ) : (
         items.map(item => (
           <Bookmark
-            key={item.id}
+            key={item._id}
             bookmark={item}
             updateBookmark={updateBookmark}
             deleteBm={deleteBm}

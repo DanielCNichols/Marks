@@ -9,6 +9,7 @@ import Footer from './Components/Footer/Footer';
 import Modal from './Components/Modal/Modal';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Components/Loginform/LoginForm';
+import Register from './Components/RegistrationForm/RegistrationForm';
 
 function App() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -78,6 +79,7 @@ function App() {
     <div className="App" aria-live="polite">
       <Switch>
         <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
       </Switch>
       <header>
         <h1>:Marks</h1>
