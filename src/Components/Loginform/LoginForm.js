@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useLoginForm, validationRules } from '../../Hooks/useLoginForm';
 import AuthApiService from '../../Services/authService';
 import TokenService from '../../Services/tokenService';
+import UserContext from '../../context/userContext';
 
 export default function LoginForm(props) {
   const [error, setError] = useState(null);
@@ -10,11 +11,14 @@ export default function LoginForm(props) {
     validationRules
   );
 
+  const user = useContext(UserContext);
+
   async function handleLogin(inputs) {
     try {
       let { token } = await AuthApiService.postLogin(inputs);
-      TokenService.saveAuthToken(token);
-      props.history.push('/list');
+      user.processLogin(token);
+      // TokenService.saveAuthToken(token);
+      props.onSuccess();
     } catch ({ error }) {
       setError(error);
     }
@@ -24,22 +28,22 @@ export default function LoginForm(props) {
     <form onSubmit={handleSubmit}>
       <fieldset>
         <legend>Login</legend>
-        <div className="form-element">
-          <label htmlFor="username">Username</label>
+        <div className='form-element'>
+          <label htmlFor='username'>Username</label>
           <input
-            type="text"
-            name="username"
-            id="username"
+            type='text'
+            name='username'
+            id='username'
             onChange={handleChange}
             value={inputs.username}
           />
         </div>
-        <div className="form-element">
-          <label htmlFor="password">Password</label>
+        <div className='form-element'>
+          <label htmlFor='password'>Password</label>
           <input
-            type="text"
-            name="password"
-            id="password"
+            type='text'
+            name='password'
+            id='password'
             onChange={handleChange}
             value={inputs.password}
           />
@@ -57,9 +61,9 @@ export default function LoginForm(props) {
           </>
         )}
 
-        {error && <p className="error">{error}</p>}
+        {error && <p className='error'>{error}</p>}
 
-        <button type="submit">Login</button>
+        <button type='submit'>Login</button>
       </fieldset>
     </form>
   );

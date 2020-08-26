@@ -16,32 +16,32 @@ export default function BookmarksList(props) {
   //IDEA: Pass in filter value (or null, if initial load) to get bookmarks. Backend handles filtering through conditions in the route.
   useEffect(() => {
     ApiService.getBookmarks()
-      .then(res => {
+      .then((res) => {
         setBookmarks(res);
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error);
       });
   }, [filter]);
 
-  const addBookmark = newBookmark => {
+  const addBookmark = (newBookmark) => {
     let newList = [...bookmarks, newBookmark];
     setBookmarks(newList);
   };
 
-  const updateBookmark = newBookmark => {
-    let index = bookmarks.findIndex(bm => bm._id === newBookmark._id);
+  const updateBookmark = (newBookmark) => {
+    let index = bookmarks.findIndex((bm) => bm._id === newBookmark._id);
     let newList = [...bookmarks];
     newList[index] = newBookmark;
     setBookmarks(newList);
   };
 
-  const removeBookmark = id => {
-    let newList = bookmarks.filter(bm => bm._id !== id);
+  const removeBookmark = (id) => {
+    let newList = bookmarks.filter((bm) => bm._id !== id);
     setBookmarks(newList);
   };
 
-  const sortBookmarks = value => {
+  const sortBookmarks = (value) => {
     value === 'asc'
       ? setBookmarks([...bookmarks.sort((a, b) => a.rating - b.rating)])
       : setBookmarks([...bookmarks.sort((a, b) => b.rating - a.rating)]);
@@ -50,7 +50,7 @@ export default function BookmarksList(props) {
   //TODO: Filter by rating, search bar (good chance to use debounce!)
 
   //This will filter by value and up...
-  const filterBookmarks = value => {
+  const filterBookmarks = (value) => {
     //Should trigger a refetch of the bookmarks with useEffect();
     //Handle filtering on backend.
     setFilter(value);
@@ -60,18 +60,16 @@ export default function BookmarksList(props) {
     setFilter(null);
   };
 
-  console.log('this si the list prop', props);
-
   const addToggle = () => {
     setAdding(!adding);
   };
 
   return (
     <div>
-      <div className="control">
+      <div className='control'>
         <BookmarkControls sort={sortBookmarks} />
       </div>
-      <div className="add">
+      <div className='add'>
         {adding === true ? (
           <Modal>
             <AddForm addToggle={addToggle} addBookmark={addBookmark} />
@@ -84,7 +82,7 @@ export default function BookmarksList(props) {
           <p>Tap the green button to get started!</p>
         </>
       ) : (
-        bookmarks.map(mark => (
+        bookmarks.map((mark) => (
           <Bookmark
             key={mark._id}
             bookmark={mark}
@@ -95,7 +93,7 @@ export default function BookmarksList(props) {
       )}
 
       {!adding && !editing ? (
-        <Button className="add-button" toggleAdd={addToggle}></Button>
+        <Button className='add-button' toggleAdd={addToggle}></Button>
       ) : null}
     </div>
   );

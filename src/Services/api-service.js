@@ -8,13 +8,12 @@ const ApiService = {
         'content-type': 'application/json',
         Authorization: TokenService.getAuthToken(),
       },
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
   postBookmark(bookmark) {
-    console.log('this is the bookmark', bookmark);
     return fetch(`${config.API_ENDPOINT}/bookmarks`, {
       method: 'POST',
       headers: {
@@ -22,8 +21,8 @@ const ApiService = {
         Authorization: TokenService.getAuthToken(),
       },
       body: JSON.stringify({ bookmark }),
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
@@ -35,8 +34,8 @@ const ApiService = {
         Authorization: TokenService.getAuthToken(),
       },
       body: JSON.stringify({ updated }),
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
@@ -47,8 +46,8 @@ const ApiService = {
         'content-type': 'application/json',
         Authorization: TokenService.getAuthToken(),
       },
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : undefined
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : undefined
     );
   },
 };
