@@ -21,7 +21,7 @@ export default function EditForm({
 
   async function handleEditSubmit(id, updated) {
     try {
-      let res = await ApiService.editBookmark(123, updated);
+      let res = await ApiService.editBookmark(id, updated);
       updateBookmark(res);
       toggleEdit();
     } catch (error) {
