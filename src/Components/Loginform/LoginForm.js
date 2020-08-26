@@ -15,9 +15,8 @@ export default function LoginForm(props) {
 
   async function handleLogin(inputs) {
     try {
-      let { token } = await AuthApiService.postLogin(inputs);
-      user.processLogin(token);
-      // TokenService.saveAuthToken(token);
+      let res = await AuthApiService.postLogin(inputs);
+      user.processLogin(res.token);
       props.onSuccess();
     } catch ({ error }) {
       setError(error);

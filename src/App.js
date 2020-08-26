@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import s from './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Components/Loginform/LoginForm';
 import Register from './Components/RegistrationForm/RegistrationForm';
@@ -13,10 +13,10 @@ function App() {
     <div className='App' aria-live='polite'>
       <main aria-live='polite'>
         <Switch>
-          <PublicRoute exact path='/' component={LandingPage} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/register' component={Register} />
-          <ProtectedRoute exact path='/list' component={BookmarkList} />
+          <Route exact path={'/'} component={LandingPage} />
+          <Route exact path={'/login'} component={Login} />
+          <Route exact path={'/register'} component={Register} />
+          <ProtectedRoute exact path={'/list'} component={BookmarkList} />
         </Switch>
       </main>
     </div>

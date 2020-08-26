@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import config from '../config';
+import { AiFillCodeSandboxCircle } from 'react-icons/ai';
 
 let _timeoutId;
 const _TEN_SECONDS_IN_MS = 10000;
@@ -28,8 +29,11 @@ const TokenService = {
   },
   parseAuthToken() {
     const authToken = TokenService.getAuthToken();
-    if (authToken) return TokenService.parseJwt(authToken);
-    else return undefined;
+    if (authToken) {
+      return TokenService.parseJwt(authToken);
+    } else {
+      return undefined;
+    }
   },
   // _getMsUntilExpiry(payload) {
   //   return payload.exp * 1000 - Date.now();

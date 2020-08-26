@@ -13,6 +13,8 @@ export default function PublicRoute({ component, ...props }) {
           {(userContext) => {
             if (userContext.user.id) {
               return <Redirect to={'/list'} />;
+            } else {
+              return <Component {...componentProps} />;
             }
           }}
         </UserContext.Consumer>
