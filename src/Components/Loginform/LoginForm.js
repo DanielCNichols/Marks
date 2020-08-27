@@ -47,7 +47,7 @@ export default function LoginForm(props) {
             <p className={s.error}>{inputErrors.password}</p>
           )}
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             onChange={handleChange}

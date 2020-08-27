@@ -8,19 +8,16 @@ export default function BookmarkControls({ sort }) {
 
   return (
     <div>
-      <label>
-        Sort by rating
-        <select
-          className="sort-select"
-          name="sort"
-          aria-label="Sort by rating"
-          onChange={ev => handleSort(ev.target.value)}
-        >
-          <option value="">Sort by</option>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      </label>
+      <select
+        className="sort-select"
+        name="sort"
+        aria-label="Sort by rating"
+        onChange={ev => handleSort(ev.target.value)}
+      >
+        <option value="">Sort by rating</option>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
     </div>
   );
 }
