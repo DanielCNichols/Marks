@@ -19,9 +19,11 @@ export default function RegistrationForm(props) {
 
   async function handleRegister(inputs) {
     try {
+      console.log('running');
       await AuthApiService.postUser(inputs);
       props.history.push('/login');
     } catch (error) {
+      console.log(error);
       setError(error);
     }
   }
@@ -31,69 +33,67 @@ export default function RegistrationForm(props) {
       <fieldset>
         <legend>Sign Up</legend>
         <div className={s.formElement}>
-          <label htmlFor='username'>Username</label>
+          <label htmlFor="username">Username</label>
+          {inputErrors.username && (
+            <p className={s.error}>{inputErrors.username}</p>
+          )}
           <input
-            type='text'
-            name='username'
-            id='username'
+            type="text"
+            name="username"
+            id="username"
             onChange={handleChange}
             value={inputs.username}
+            placeholder="markit146"
           />
         </div>
         <div className={s.formElement}>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor="password">Password</label>
+          {inputErrors.password && (
+            <p className={s.error}>{inputErrors.password}</p>
+          )}
           <input
-            type='text'
-            name='password'
-            id='password'
+            type="password"
+            name="password"
+            id="password"
             onChange={handleChange}
             value={inputs.password}
+            placeholder="Pass123"
           />
         </div>
         <div className={s.formElement}>
-          <label htmlFor='confirmPass'>Confirm Password</label>
+          <label htmlFor="confirmPass">Confirm Password</label>
+          {inputErrors.confirmPass && (
+            <p className={s.error}>{inputErrors.confirmPass}</p>
+          )}
           <input
-            type='text'
-            name='confirmPass'
-            id='confirmPass'
+            type="password"
+            name="confirmPass"
+            id="confirmPass"
             onChange={handleChange}
             value={inputs.confirmPass}
+            placeholder="Pass123"
           />
         </div>
 
-        {inputErrors && (
-          <>
-            {Object.keys(inputErrors).map((e, idx) => {
-              return (
-                <p style={{ color: 'white' }} key={idx}>
-                  {inputErrors[e]}
-                </p>
-              );
-            })}
-          </>
-        )}
-
         {error && (
-          <>
+          <div className={s.postError}>
             {Object.keys(error).map((e, idx) => {
               return (
-                <p style={{ color: 'white' }} key={idx}>
+                <p className={s.error} key={idx}>
                   {error[e]}
                 </p>
               );
             })}
-          </>
+          </div>
         )}
 
-        {error && <p className='error'>{error}</p>}
-
-        <button className={s.submit} type='submit'>
+        <button className={s.submit} type="submit">
           Sign up
         </button>
       </fieldset>
 
-      <p>
-        Already have an account? <Link to='/login'>Log in!</Link>
+      <p className={s.loginTag}>
+        Already have an account? <Link to="/login">Log in!</Link>
       </p>
     </form>
   );

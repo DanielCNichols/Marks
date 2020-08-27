@@ -10,11 +10,11 @@ const validationRules = values => {
   }
 
   if (!values.confirmPass) {
-    errors.confirmPass = 'Please confirm your password';
+    errors.confirmPass = 'Please confirm password';
   }
 
   if (values.password !== values.confirmPass) {
-    errors.passMatch = 'Passwords must match';
+    errors.confirmPass = 'Passwords must match';
   }
 
   return errors;

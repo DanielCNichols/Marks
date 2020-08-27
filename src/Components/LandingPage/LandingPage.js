@@ -22,13 +22,13 @@ export default function LandingPage(props) {
           <h2>Bookmarking made easy</h2>
         </header>
         <div className={s.onBoardingPhoto}>
-          <img src='#' alt='screenshot' />
+          <img src="#" alt="screenshot" />
         </div>
         <div className={s.onBoardingContent}>
           <p>
             Collections? Favorites? Saved? <br />
             <br />
-            Whatever you call it, we all need to keep track of our favoirte
+            Whatever you call it, we all need to keep track of our favorite
             sites. Marks makes it simple. Just sign in, and you are immediately
             directed to your own personally curated list of websites. No muss,
             no fuss!

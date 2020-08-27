@@ -39,4 +39,53 @@
 .onBoardingPhoto {
   width: 100%;
   height: 150px;
+  /* tempborder */
+  border: 1px solid white;
+  margin-bottom: 20px;
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 450px) {
+  .landingPage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-column-gap: 30px;
+  }
+}
+
+.headline {
+  grid-row: 1;
+  grid-column: span 2;
+}
+
+.formContainer {
+  grid-column: 1;
+}
+
+.onBoarding {
+  grid-column: 2;
+}
+
+/* .onBoarding h2 {
+  line-height: 0.5em;
+} */
+
+@media screen and (min-width: 800px) {
+  .landingPage {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .onBoarding,
+  .formContainer,
+  .onBoardingPhoto,
+  .onBoardingContent {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .onBoardingPhoto {
+    margin-bottom: 20px;
+  }
 }

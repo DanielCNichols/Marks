@@ -12,7 +12,7 @@ a {
 }
 
 body {
-  background-color: var(--color-primary);
+  background-color: rgba(0, 0, 0, 0.932);
   background-size: cover;
   background-attachment: fixed;
   padding: 5px;
@@ -25,7 +25,7 @@ body {
   height: auto;
   min-height: 90vh;
   width: 100%;
-  padding: 20px 10px;
+  padding: 10px 10px 100px 10px;
   position: relative;
   top: 50px;
   margin: 0 auto 150px auto;
@@ -48,16 +48,18 @@ header:first-child {
 
 @media screen and (min-width: 450px) {
   .App {
-    width: 70%;
+    top: 100px;
+    width: 90%;
+    height: auto;
+    min-height: 0;
   }
 }
 
 @media screen and (min-width: 800px) {
   .App {
-    width: 40%;
+    width: 80%;
     /* Might make the min width smaller */
-    min-width: 420px;
-    position: initial;
+    min-width: 800px;
     margin: 0 auto;
   }
 }

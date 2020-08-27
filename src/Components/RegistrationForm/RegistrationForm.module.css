@@ -1,9 +1,22 @@
 @import '../../vars.module.css';
 
+.error,
+.postError {
+  color: red;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.postError {
+  margin: 0 auto 10px auto;
+  width: 90%;
+}
+
 .registrationForm {
   margin: 0 auto;
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 6px;
   padding: 20px 10px;
 }
 
@@ -49,10 +62,22 @@
   margin-bottom: 20px;
 }
 
-.registrationForm:last-child {
+.loginTag {
+  color: var(--color-subheading);
   font-size: 0.8em;
+  text-align: center;
 }
 
-.registrationForm a {
-  color: var(--color-subheading);
+.loginTag a {
+  color: white;
+}
+
+/* tablet styles */
+
+/* Desktop Styles */
+
+@media screen and (min-width: 800px) {
+  .registrationForm {
+    width: 80%;
+  }
 }
