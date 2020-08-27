@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const validationRules = values => {
   let errors = {};
   if (!values.username) {
-    errors.url = 'Username is required';
+    errors.username = 'Username is required';
   }
   if (!values.password) {
     errors.password = 'Password is required';

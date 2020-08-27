@@ -2,9 +2,10 @@
 
 .landingPage {
   display: flex;
+  padding: 5px;
   flex-direction: column;
   justify-content: center;
-  padding: 5px;
+  padding: 20px 5px;
 }
 
 .landingPage header {
@@ -51,6 +52,8 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-column-gap: 30px;
+    border: 2px solid white;
+    padding: 50px 20px 150px 20px;
   }
 }
 

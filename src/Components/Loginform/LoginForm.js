@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useLoginForm, validationRules } from '../../Hooks/useLoginForm';
 import AuthApiService from '../../Services/authService';
-import TokenService from '../../Services/tokenService';
 import UserContext from '../../context/userContext';
+import s from './LoginForm.module.css';
 
 export default function LoginForm(props) {
   const [error, setError] = useState(null);
@@ -15,6 +15,7 @@ export default function LoginForm(props) {
 
   async function handleLogin(inputs) {
     try {
+      setError(null);
       let res = await AuthApiService.postLogin(inputs);
       user.processLogin(res.token);
       props.onSuccess();
@@ -24,45 +25,45 @@ export default function LoginForm(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={s.loginForm} onSubmit={handleSubmit}>
       <fieldset>
-        <legend>Login</legend>
-        <div className='form-element'>
-          <label htmlFor='username'>Username</label>
+        <legend> Sign In</legend>
+        <div className={s.formElement}>
+          <label htmlFor="username">Username</label>
+          {inputErrors.username && (
+            <p className={s.error}>{inputErrors.username}</p>
+          )}
           <input
-            type='text'
-            name='username'
-            id='username'
+            type="text"
+            name="username"
+            id="username"
             onChange={handleChange}
             value={inputs.username}
           />
         </div>
-        <div className='form-element'>
-          <label htmlFor='password'>Password</label>
+        <div className={s.formElement}>
+          <label htmlFor="password">Password</label>
+          {inputErrors.password && (
+            <p className={s.error}>{inputErrors.password}</p>
+          )}
           <input
-            type='text'
-            name='password'
-            id='password'
+            type="text"
+            name="password"
+            id="password"
             onChange={handleChange}
             value={inputs.password}
           />
         </div>
 
-        {inputErrors && (
-          <>
-            {Object.keys(inputErrors).map((e, idx) => {
-              return (
-                <p style={{ color: 'white' }} key={idx}>
-                  {inputErrors[e]}
-                </p>
-              );
-            })}
-          </>
+        {error && (
+          <div className={s.postError}>
+            <p>{error}</p>
+          </div>
         )}
 
-        {error && <p className='error'>{error}</p>}
-
-        <button type='submit'>Login</button>
+        <button className={s.submit} type="submit">
+          Login
+        </button>
       </fieldset>
     </form>
   );

@@ -1,0 +1,75 @@
+@import '../../vars.module.css';
+
+.error,
+.postError {
+  color: red;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.postError {
+  margin: 0 auto 10px auto;
+  width: 90%;
+}
+
+.loginForm {
+  margin: 0 auto;
+  width: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 6px;
+  padding: 20px 10px;
+}
+
+.loginForm fieldset,
+.formElement {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+.loginForm legend {
+  text-align: center;
+  color: var(--color-subheading);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.formElement {
+  margin-bottom: 10px;
+}
+
+.formElement input {
+  border-radius: 3px;
+  height: 30px;
+  padding: 3px 5px;
+}
+
+.formElement label {
+  margin-bottom: 5px;
+}
+
+.submit {
+  display: block;
+  width: 40%;
+  max-width: 150px;
+  height: 40px;
+  padding: 10px;
+  margin: 25px auto;
+  background-color: #23f84f;
+  border-radius: 5px;
+  color: black;
+}
+
+@media screen and (min-width: 450px) {
+  .loginForm {
+    width: 40%;
+    min-width: 280px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .loginForm {
+    width: 80%;
+  }
+}
