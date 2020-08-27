@@ -1,0 +1,14 @@
+@import '../../vars.module.css';
+
+.navBar {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  width: 100%;
+  margin: 0;
+  padding: 0 20px;
+  background-color: var(--card-accent);
+}

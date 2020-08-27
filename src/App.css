@@ -19,8 +19,7 @@ body {
 .App {
   font-family: var(--main-font);
   width: 100%;
-  position: relative;
-  padding: 50px 5px 150px 5px;
+  padding: 100px 5px 150px 5px;
   margin: 0 auto;
   color: var(--color-secondary);
   border-radius: 6px;

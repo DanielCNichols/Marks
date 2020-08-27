@@ -47,7 +47,7 @@ export class UserProvider extends Component {
     TokenService.clearCallbackBeforeExpiry();
   }
 
-  setError = (error) => {
+  setError = error => {
     console.error(error);
     this.setState({ error });
   };
@@ -56,11 +56,11 @@ export class UserProvider extends Component {
     this.setState({ error: null });
   };
 
-  setUser = (user) => {
+  setUser = user => {
     this.setState({ user });
   };
 
-  processLogin = (authToken) => {
+  processLogin = authToken => {
     TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
@@ -75,9 +75,8 @@ export class UserProvider extends Component {
 
   processLogout = () => {
     TokenService.clearAuthToken();
-    TokenService.clearType();
-    TokenService.clearCallbackBeforeExpiry();
-    IdleService.unRegisterIdleResets();
+    // TokenService.clearCallbackBeforeExpiry();
+    // IdleService.unRegisterIdleResets();
     this.setUser({});
   };
 
@@ -90,13 +89,13 @@ export class UserProvider extends Component {
 
   fetchRefreshToken = () => {
     AuthApiService.refreshToken()
-      .then((res) => {
+      .then(res => {
         TokenService.saveAuthToken(res.authToken);
         TokenService.queueCallbackBeforeExpiry(() => {
           this.fetchRefreshToken();
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.setError(err);
       });
   };

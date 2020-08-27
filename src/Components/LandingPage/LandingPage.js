@@ -4,10 +4,6 @@ import s from './LandingPage.module.css';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 
 export default function LandingPage(props) {
-  function handleLoginSuccess() {
-    props.history.push('/list');
-  }
-
   return (
     <div className={s.landingPage}>
       <header className={s.headline}>

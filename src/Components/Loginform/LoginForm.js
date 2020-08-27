@@ -18,7 +18,7 @@ export default function LoginForm(props) {
       setError(null);
       let res = await AuthApiService.postLogin(inputs);
       user.processLogin(res.token);
-      props.onSuccess();
+      props.history.push('/list');
     } catch ({ error }) {
       setError(error);
     }
