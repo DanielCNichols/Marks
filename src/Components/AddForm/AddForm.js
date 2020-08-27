@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ApiService from '../../Services/api-service';
-import './AddForm.css';
+import s from './AddForm.module.css';
 import { MdCancel, MdSave } from 'react-icons/md';
 import isUrl from 'isurl';
 
@@ -37,24 +37,24 @@ export default function AddForm(props) {
 
   const { addToggle } = props;
   return (
-    <form className="add-form" onSubmit={handleSubmit}>
+    <form className={s.addForm} onSubmit={handleSubmit}>
       <fieldset>
         <legend>Add Bookmark</legend>
-        <label className="add-form-title">
-          Title
+        <div className={s.formElement}>
+          <label>Title</label>
           <input
             type="text"
             name="title"
             aria-required="true"
             aria-label="Title"
           />
-        </label>
-        <label className="add-form-url">
-          Url
+        </div>
+        <div className={s.formElement}>
+          <label>Url</label>
           <input type="text" name="url" aria-required="true" aria-label="Url" />
-        </label>
-        <label className="add-form-rating">
-          Rating
+        </div>
+        <div className={s.formElement}>
+          <label>Rating</label>
           <select
             name="rating"
             aria-required="false"
@@ -66,9 +66,9 @@ export default function AddForm(props) {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-        </label>
-        <label className="add-form-desc">
-          Description
+        </div>
+        <div className={s.formElement}>
+          <label>Description</label>
           <textarea
             name="desc"
             rows="5"
@@ -76,20 +76,20 @@ export default function AddForm(props) {
             aria-required="false"
             aria-label="Description"
           />
-        </label>
+        </div>
         {error && (
           <>
             <p style={{ color: 'white' }}>{error.message}</p>
           </>
         )}
-        <div className="add-form-controls">
-          <button className="cancel" type="button" onClick={addToggle}>
+        <div className={s.formControls}>
+          <button className={s.cancel} type="button" onClick={addToggle}>
             <MdCancel />
-            <span>Cancel</span>
+            <p>Cancel</p>
           </button>
-          <button className="save" type="submit">
+          <button className={s.submit} type="submit">
             <MdSave />
-            <span>Save</span>
+            <p>Save</p>
           </button>
         </div>
       </fieldset>

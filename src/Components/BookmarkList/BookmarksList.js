@@ -97,9 +97,7 @@ export default function BookmarksList(props) {
         </>
       )}
 
-      {!adding && !editing ? (
-        <Button className="add-button" toggleAdd={addToggle}></Button>
-      ) : null}
+      {!adding && !editing ? <Button toggleAdd={addToggle}></Button> : null}
     </div>
   );
 }

@@ -1,7 +1,96 @@
+@import '../../vars.module.css';
 * {
   box-sizing: border-box;
 }
 
+.error,
+.postError {
+  color: red;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.postError {
+  margin: 0 auto 10px auto;
+  width: 90%;
+}
+
+.addForm {
+  margin: 0 auto;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 6px;
+  padding: 20px 10px;
+}
+
+.addForm fieldset,
+.formElement {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+.addForm legend {
+  text-align: center;
+  color: var(--color-subheading);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.formElement {
+  margin-bottom: 10px;
+}
+
+.formElement input,
+.formElement select {
+  border-radius: 3px;
+  height: 30px;
+  padding: 3px 5px;
+}
+
+.formElement label {
+  margin-bottom: 5px;
+}
+
+.formControls {
+  display: flex;
+  justify-content: space-around;
+  align-items: space-around;
+  margin-top: 20px;
+}
+
+.formControls button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.submit svg {
+  color: var(--color-secondary);
+  font-size: 3em;
+}
+
+.cancel svg {
+  color: red;
+  font-size: 3em;
+}
+
+.submit,
+.cancel {
+  color: white;
+}
+/* tablet styles */
+
+/* Desktop Styles */
+
+@media screen and (min-width: 800px) {
+  .addForm {
+    width: 80%;
+  }
+}
+
+/* 
 .add-form fieldset {
   border: none;
   width: 100%;
@@ -85,4 +174,4 @@ select {
     flex-direction: row;
     align-items: space-between;
   }
-}
+} */
