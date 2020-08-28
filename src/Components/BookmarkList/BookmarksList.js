@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Bookmark from '../Bookmark/Bookmark';
-import Modal from '../Modal/Modal';
 import AddForm from '../AddForm/AddForm';
 import Button from '../Button/Button';
 import ApiService from '../../Services/api-service';
@@ -9,10 +8,8 @@ import s from './BookmarksList.module.css';
 
 export default function BookmarksList(props) {
   const [bookmarks, setBookmarks] = useState([]);
-  const [editing, setEditing] = useState(false);
   const [adding, setAdding] = useState(false);
   const [error, setError] = useState(null);
-  const [filter, setFilter] = useState(null);
 
   //IDEA: Pass in filter value (or null, if initial load) to get bookmarks. Backend handles filtering through conditions in the route.
   useEffect(() => {
@@ -23,7 +20,7 @@ export default function BookmarksList(props) {
       .catch(error => {
         setError(error);
       });
-  }, [filter]);
+  }, []);
 
   const addBookmark = newBookmark => {
     let newList = [...bookmarks, newBookmark];
@@ -48,34 +45,20 @@ export default function BookmarksList(props) {
       : setBookmarks([...bookmarks.sort((a, b) => b.rating - a.rating)]);
   };
 
-  //TODO: Filter by rating, search bar (good chance to use debounce!)
-
-  //This will filter by value and up...
-  const filterBookmarks = value => {
-    //Should trigger a refetch of the bookmarks with useEffect();
-    //Handle filtering on backend.
-    setFilter(value);
-  };
-
-  const clearFilter = () => {
-    setFilter(null);
-  };
-
   const addToggle = () => {
     setAdding(!adding);
   };
 
   return (
     <div className={s.BookmarksList}>
+      {error && <p>{error}</p>}
       <div className="add">
         {adding === true ? (
           <AddForm addToggle={addToggle} addBookmark={addBookmark} />
         ) : null}
       </div>
 
-      {/* Hide the list if adding to avoid modal but still get modal-ish behavior */}
-
-      {!adding && !editing ? (
+      {!adding ? (
         <>
           <div className={s.control}>
             <BookmarkControls sort={sortBookmarks} />
@@ -98,7 +81,7 @@ export default function BookmarksList(props) {
         </>
       ) : null}
 
-      {!adding && !editing ? <Button toggleAdd={addToggle}></Button> : null}
+      {!adding ? <Button toggleAdd={addToggle}></Button> : null}
     </div>
   );
 }

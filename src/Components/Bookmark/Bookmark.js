@@ -26,10 +26,6 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
     }
   }
 
-  const handleCancel = () => {
-    setEditing(false);
-  };
-
   const handleExpand = () => {
     setExpanded(!expanded);
   };
@@ -45,18 +41,6 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
     ApiService.deleteBookmark(id)
       .then(removeBookmark(id))
       .catch(error => setError(error));
-  };
-
-  const renderError = () => {
-    return (
-      <>
-        {error ? (
-          <div className={s.error} aria-live="assertive">
-            {error.message}
-          </div>
-        ) : null}
-      </>
-    );
   };
 
   const renderCollapsed = () => {
@@ -112,76 +96,42 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
       <section id={_id} className={s.bookmarkItemExpanded}>
         <h3 className={s.headExpanded}>{title}</h3>
         <div className={s.ratingExpanded}>
-          {editing ? (
-            <select id={s.editRating}>
-              <option value="">Rating</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          ) : (
-            <RatingSpan rating={rating} />
-          )}
+          <RatingSpan rating={rating} />
         </div>
 
-        <p
-          className={s.url}
-          role="textbox"
-          suppressContentEditableWarning={true}
-          contentEditable={editing}
-        >
-          {url}
-        </p>
+        <p className={s.url}>{url}</p>
 
-        <p
-          className={s.desc}
-          role="textbox"
-          contentEditable={editing}
-          suppressContentEditableWarning={true}
-        >
-          {desc ? desc : 'Add a description'}
-        </p>
+        <p className={s.desc}>{desc ? desc : 'Add a description'}</p>
 
         <div className={s.itemControlsContainerExpanded}>
           <div className={s.itemControlsExpanded}>
-            {editing ? (
-              <div className={s.editControl}>
-                <button>Cancel</button>
-                <button onClick={handleEditSubmit}>Save</button>
-              </div>
-            ) : (
-              <>
-                <div className={s.less}>
-                  <MdExpandLess onClick={() => handleExpand()} />
-                  <span>Less</span>
-                </div>
-                <div className={s.tooltip}>
-                  <MdEdit className={s.tooltip} onClick={() => toggleEdit()} />
-                  <span className={s.tooltiptext}>Edit</span>
-                </div>
-                <div className={s.tooltip}>
-                  <MdDelete
-                    onClick={() => {
-                      deleteBookmark(_id);
-                    }}
-                  />
-                  <span className={s.tooltiptext}>Delete</span>
-                </div>
-                <div className={s.tooltip}>
-                  <a
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    href={url}
-                    className={s.linkButton}
-                  >
-                    <TiArrowForward />
-                  </a>
-                  <span className={s.tooltiptext}>Visit</span>
-                </div>
-              </>
-            )}
+            <div className={s.less}>
+              <MdExpandLess onClick={() => handleExpand()} />
+              <span>Less</span>
+            </div>
+            <div className={s.tooltip}>
+              <MdEdit className={s.tooltip} onClick={() => toggleEdit()} />
+              <span className={s.tooltiptext}>Edit</span>
+            </div>
+            <div className={s.tooltip}>
+              <MdDelete
+                onClick={() => {
+                  deleteBookmark(_id);
+                }}
+              />
+              <span className={s.tooltiptext}>Delete</span>
+            </div>
+            <div className={s.tooltip}>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href={url}
+                className={s.linkButton}
+              >
+                <TiArrowForward />
+              </a>
+              <span className={s.tooltiptext}>Visit</span>
+            </div>
           </div>
         </div>
       </section>
@@ -189,8 +139,6 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
   };
 
   const renderEditForm = () => {
-    const { _id, title, desc, rating, url } = bookmark;
-
     return (
       <form onSubmit={handleSubmit} className={s.editForm}>
         <fieldset>
@@ -246,8 +194,16 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
 
           <div className={s.editControlsContainer}>
             <div className={s.editFormControls}>
-              <button type="button">Cancel</button>
-              <button type="submit">Save</button>
+              <button
+                className={s.cancel}
+                type="button"
+                onClick={() => toggleEdit()}
+              >
+                Cancel
+              </button>
+              <button className={s.submit} type="submit">
+                Save
+              </button>
             </div>
           </div>
         </fieldset>

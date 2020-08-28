@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './App.css';
+import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Components/Loginform/LoginForm';
 import Register from './Components/RegistrationForm/RegistrationForm';

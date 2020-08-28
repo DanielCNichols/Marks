@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import isUrl from 'isurl';
+import { useState, useEffect } from 'react';
 //* Our various rules for validation live here
 const validationRules = values => {
   let inputErrors = {};

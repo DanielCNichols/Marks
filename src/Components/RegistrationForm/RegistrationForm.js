@@ -44,6 +44,7 @@ export default function RegistrationForm(props) {
             onChange={handleChange}
             value={inputs.username}
             placeholder="markit146"
+            autoComplete="username"
           />
         </div>
         <div className={s.formElement}>
@@ -58,6 +59,7 @@ export default function RegistrationForm(props) {
             onChange={handleChange}
             value={inputs.password}
             placeholder="Pass123"
+            autoComplete="password"
           />
         </div>
         <div className={s.formElement}>
@@ -72,6 +74,7 @@ export default function RegistrationForm(props) {
             onChange={handleChange}
             value={inputs.confirmPass}
             placeholder="Pass123"
+            autoComplete="confirmPass"
           />
         </div>
 

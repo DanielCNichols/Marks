@@ -116,7 +116,8 @@ r {
   margin: 10px 0;
 }
 
-.editForm input {
+.editForm input,
+.editForm textarea {
   padding: 5px;
   margin-top: 5px;
 }
@@ -203,6 +204,27 @@ r {
   margin: 0 auto;
 }
 
+.editFormControls button {
+  width: 40%;
+  max-width: 150px;
+  height: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit {
+  background-color: #23f84f;
+}
+
+.cancel {
+  border: 2px solid rgb(230, 0, 125);
+  background-color: rgba(255, 255, 255, 0.911);
+}
 .headExpanded {
   grid-row-start: 1;
   word-wrap: break-word;

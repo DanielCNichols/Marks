@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import s from './LandingPage.module.css';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import screenshot from '../../onboardingpic.jpg';
 
 export default function LandingPage(props) {
   return (
     <div className={s.landingPage}>
       <header className={s.headline}>
-        <h1>:Marks</h1>
-        <p>Bookmarking as simple as :q!</p>
+        <h1>Marks</h1>
+        <p>The Programmer's Bookmarking App</p>
       </header>
       <div className={s.formContainer}>
         <RegistrationForm />
@@ -18,7 +18,7 @@ export default function LandingPage(props) {
           <h2>Bookmarking made easy</h2>
         </header>
         <div className={s.onBoardingPhoto}>
-          <img src="#" alt="screenshot" />
+          <img src={screenshot} alt="marks screenshot" />
         </div>
         <div className={s.onBoardingContent}>
           <p>
