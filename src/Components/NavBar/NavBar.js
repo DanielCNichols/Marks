@@ -13,7 +13,9 @@ export default function NavBar(props) {
   return (
     <nav className={s.navBar}>
       <div className={s.logo}>
-        <img src={logo} alt="marks logo" />
+        <Link to="/">
+          <img src={logo} alt="marks logo" />
+        </Link>
       </div>
 
       {userContext.user.id ? (

@@ -16,7 +16,7 @@ function App() {
       <main aria-live="polite">
         <Switch>
           <PublicRoute exact path={'/'} component={LandingPage} />
-          <Route exact path={'/login'} component={Login} />
+          <PublicRoute exact path={'/login'} component={Login} />
           <Route exact path={'/register'} component={Register} />
           <ProtectedRoute exact path={'/list'} component={BookmarkList} />
         </Switch>
