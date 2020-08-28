@@ -33,14 +33,14 @@ export class UserProvider extends Component {
     IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
-  // componentDidMount() {
-  //   if (TokenService.hasAuthToken()) {
-  //     IdleService.regiserIdleTimerResets();
-  //     TokenService.queueCallbackBeforeExpiry(() => {
-  //       this.fetchRefreshToken();
-  //     });
-  //   }
-  // }
+  componentDidMount() {
+    if (TokenService.hasAuthToken()) {
+      IdleService.regiserIdleTimerResets();
+      TokenService.queueCallbackBeforeExpiry(() => {
+        this.fetchRefreshToken();
+      });
+    }
+  }
 
   componentWillUnmount() {
     IdleService.unRegisterIdleResets();
@@ -67,16 +67,16 @@ export class UserProvider extends Component {
       id: jwtPayload.id,
       username: jwtPayload.username,
     });
-    // IdleService.regiserIdleTimerResets();
-    // TokenService.queueCallbackBeforeExpiry(() => {
-    //   this.fetchRefreshToken();
-    // });
+    IdleService.regiserIdleTimerResets();
+    TokenService.queueCallbackBeforeExpiry(() => {
+      this.fetchRefreshToken();
+    });
   };
 
   processLogout = () => {
     TokenService.clearAuthToken();
-    // TokenService.clearCallbackBeforeExpiry();
-    // IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
     this.setUser({});
   };
 

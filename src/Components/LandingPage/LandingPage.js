@@ -29,6 +29,15 @@ export default function LandingPage(props) {
             directed to your own personally curated list of websites. No muss,
             no fuss!
           </p>
+          <br />
+          <p>
+            You can demo this app with:
+            <br />
+            <br />
+            username: daniel61
+            <br />
+            password: Pass123
+          </p>
         </div>
       </div>
     </div>
