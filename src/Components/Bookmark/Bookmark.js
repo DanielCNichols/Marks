@@ -4,26 +4,27 @@ import { TiArrowForward } from 'react-icons/ti';
 import ApiService from '../../Services/api-service';
 import RatingSpan from '../RatingSpan/RatingSpan';
 import s from './Bookmark.module.css';
-import Modal from '../Modal/Modal';
-import EditForm from '../EditForm/EditForm';
+import { useEditForm, validationRules } from '../../Hooks/useEditForm';
 
-/* //! Lets get weird. Let's make the actual bookmark editable in place.  WE can use role= textbox and contentEditable along with custom javascript to handle this. Don't forget to render the errors!*/
-
-export default function Bookmark({
-  bookmark,
-  removeBookmark,
-  updateBookmark,
-  editToggle,
-}) {
+export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
   const [expanded, setExpanded] = useState(false);
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState(null);
-  const [inputs, setInputs] = useState({
-    title: bookmark.title,
-    rating: bookmark.rating,
-    url: bookmark.url,
-    desc: bookmark.desc,
-  });
+  const { inputs, handleChange, handleSubmit, inputErrors } = useEditForm(
+    bookmark,
+    handleEditSubmit,
+    validationRules
+  );
+
+  async function handleEditSubmit(id, updated) {
+    try {
+      let res = await ApiService.editBookmark(id, updated);
+      updateBookmark(res);
+      toggleEdit();
+    } catch (error) {
+      setError(error);
+    }
+  }
 
   const handleCancel = () => {
     setEditing(false);
@@ -40,25 +41,6 @@ export default function Bookmark({
     setEditing(!editing);
   };
 
-  const handleEditContent = ev => {
-    ev.persist();
-    console.log('this should be updated', ev.target.innerText);
-    let newInputs = {
-      ...inputs,
-      [ev.target.attributes.name.value]: ev.target.innerText,
-    };
-    setInputs(newInputs);
-
-    handleEditSubmit();
-  };
-
-  const handleEditSubmit = () => {
-    let newBookmark = {
-      ...inputs,
-    };
-
-    console.log(newBookmark);
-  };
   const deleteBookmark = id => {
     ApiService.deleteBookmark(id)
       .then(removeBookmark(id))
@@ -210,31 +192,56 @@ export default function Bookmark({
     const { _id, title, desc, rating, url } = bookmark;
 
     return (
-      <form className={s.editForm}>
+      <form onSubmit={handleSubmit} className={s.editForm}>
         <fieldset>
           <div className={s.editTitle}>
-            <label>Title</label>
-            <input type="text" value={title} />
+            <label htmlFor="title">Title</label>
+            {inputErrors.title && (
+              <p className={s.error}>{inputErrors.title}</p>
+            )}
+            <input
+              name="title"
+              onChange={handleChange}
+              value={inputs.title}
+              type="text"
+            />
           </div>
           <div className={s.editRating}>
-            <label>Rating</label>
-            <select>
+            <label htmlFor="rating">Rating</label>
+            <select name="rating" onChange={handleChange} value={inputs.rating}>
               <option value="">Rating</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
           <div className={s.editUrl}>
-            <label>Url</label>
-            <input type="text" value={url} />
+            <label htmlFor="url">Url</label>
+            {inputErrors.url && <p className={s.error}>{inputErrors.url}</p>}
+            <input
+              name="url"
+              onChange={handleChange}
+              value={inputs.url}
+              type="text"
+            />
           </div>
 
           <div className={s.editDesc}>
-            <label>Description</label>
-            <textarea className={s.desc} />
+            <label htmlFor="desc">Description</label>
+            <textarea
+              name="desc"
+              onChange={handleChange}
+              value={inputs.desc}
+              className={s.desc}
+            />
+
+            {error && (
+              <div className={s.error} aria-live="assertive">
+                {error.message}
+              </div>
+            )}
           </div>
 
           <div className={s.editControlsContainer}>

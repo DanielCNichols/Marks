@@ -14,16 +14,6 @@ export default function EditForm({ bookmark, updateBookmark, toggleEdit }) {
     validationRules
   );
 
-  async function handleEditSubmit(id, updated) {
-    try {
-      let res = await ApiService.editBookmark(id, updated);
-      updateBookmark(res);
-      toggleEdit();
-    } catch (error) {
-      setError(error);
-    }
-  }
-
   return (
     <form className="bookmark-form" onSubmit={handleSubmit}>
       <label className="edit-form-title">

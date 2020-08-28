@@ -13,3 +13,18 @@
   padding: 0 20px;
   background-color: var(--card-accent);
 }
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 75px;
+}
+
+.logo img {
+  flex-shrink: 0;
+  height: 170%;
+  width: 100%;
+}

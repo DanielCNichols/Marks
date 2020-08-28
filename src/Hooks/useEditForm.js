@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react';
 import isUrl from 'isurl';
 //* Our various rules for validation live here
 const validationRules = values => {
-  let errors = {};
+  let inputErrors = {};
   if (!values.url) {
-    errors.url = 'Url is required';
+    inputErrors.url = 'Url is required';
   }
   if (!values.title) {
-    errors.title = 'Title is required';
+    inputErrors.title = 'Title is required';
   }
 
   try {
     new URL(values.url);
   } catch (error) {
-    errors.urlFormat = 'URL must be in http://www.domain.com format';
+    inputErrors.urlFormat = 'URL must be in http://www.domain.com format';
   }
 
-  return errors;
+  return inputErrors;
 };
 
 const useEditForm = (bookmark, callback, validation) => {
