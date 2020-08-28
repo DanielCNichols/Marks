@@ -74,7 +74,8 @@ export default function BookmarksList(props) {
       </div>
 
       {/* Hide the list if adding to avoid modal but still get modal-ish behavior */}
-      {!adding && (
+
+      {!adding && !editing ? (
         <>
           <div className={s.control}>
             <BookmarkControls sort={sortBookmarks} />
@@ -95,7 +96,7 @@ export default function BookmarksList(props) {
             ))
           )}
         </>
-      )}
+      ) : null}
 
       {!adding && !editing ? <Button toggleAdd={addToggle}></Button> : null}
     </div>
