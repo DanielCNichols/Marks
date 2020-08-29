@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookmarkControlsu tests renders the UI as expected 1`] = `
+<div>
+  <select
+    aria-label="Sort by rating"
+    className="sort-select"
+    name="sort"
+    onChange={[Function]}
+  >
+    <option
+      value=""
+    >
+      Sort by rating
+    </option>
+    <option
+      value="asc"
+    >
+      Ascending
+    </option>
+    <option
+      value="desc"
+    >
+      Descending
+    </option>
+  </select>
+</div>
+`;

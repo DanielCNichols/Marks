@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage tests renders the UI as expected 1`] = `
+<div
+  className="landingPage"
+>
+  <header
+    className="headline"
+  >
+    <h1>
+      Marks
+    </h1>
+    <p>
+      The Programmer's Bookmarking App
+    </p>
+  </header>
+  <div
+    className="formContainer"
+  >
+    <form
+      className="registrationForm"
+      onSubmit={[Function]}
+    >
+      <fieldset>
+        <legend>
+          Sign Up
+        </legend>
+        <div
+          className="formElement"
+        >
+          <label
+            htmlFor="username"
+          >
+            Username
+          </label>
+          <input
+            autoComplete="username"
+            id="username"
+            name="username"
+            onChange={[Function]}
+            placeholder="markit146"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="formElement"
+        >
+          <label
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            autoComplete="password"
+            id="password"
+            name="password"
+            onChange={[Function]}
+            placeholder="Pass123"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          className="formElement"
+        >
+          <label
+            htmlFor="confirmPass"
+          >
+            Confirm Password
+          </label>
+          <input
+            autoComplete="confirmPass"
+            id="confirmPass"
+            name="confirmPass"
+            onChange={[Function]}
+            placeholder="Pass123"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          className="submit"
+          type="submit"
+        >
+          Sign up
+        </button>
+      </fieldset>
+      <p
+        className="loginTag"
+      >
+        Already have an account? 
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          Log in!
+        </a>
+      </p>
+    </form>
+  </div>
+  <div
+    className="onBoarding"
+  >
+    <header>
+      <h2>
+        Bookmarking made easy
+      </h2>
+    </header>
+    <div
+      className="onBoardingPhoto"
+    >
+      <img
+        alt="marks screenshot"
+        src="onboardingpic.jpg"
+      />
+    </div>
+    <div
+      className="onBoardingContent"
+    >
+      <p>
+        Collections? Favorites? Saved? 
+        <br />
+        <br />
+        Whatever you call it, we all need to keep track of our favorite sites. Marks makes it simple. Just sign in, and you are immediately directed to your own personally curated list of websites. No muss, no fuss!
+      </p>
+      <br />
+      <p>
+        You can demo this app with:
+        <br />
+        <br />
+        username: daniel61
+        <br />
+        password: Pass123
+      </p>
+    </div>
+  </div>
+</div>
+`;

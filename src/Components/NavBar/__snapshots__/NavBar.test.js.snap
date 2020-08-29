@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar tests renders the UI as expected 1`] = `
+<nav
+  className="navBar"
+>
+  <div
+    className="logo"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="marks logo"
+        src="logo.png"
+      />
+    </a>
+  </div>
+  <p>
+    <a
+      href="/login"
+      onClick={[Function]}
+    >
+      Login
+    </a>
+  </p>
+</nav>
+`;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage tests renders the UI as expected when there is a value prop 1`] = `
+<span
+  className="NA"
+>
+  Not Rated
+</span>
+`;
+
+exports[`LandingPage tests renders the UI as expected when there is no value prop 1`] = `
+<span
+  className="NA"
+>
+  Not Rated
+</span>
+`;

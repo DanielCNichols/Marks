@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Registration Form tests renders the UI as expected 1`] = `
+<form
+  className="registrationForm"
+  onSubmit={[Function]}
+>
+  <fieldset>
+    <legend>
+      Sign Up
+    </legend>
+    <div
+      className="formElement"
+    >
+      <label
+        htmlFor="username"
+      >
+        Username
+      </label>
+      <input
+        autoComplete="username"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="markit146"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="formElement"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        autoComplete="password"
+        id="password"
+        name="password"
+        onChange={[Function]}
+        placeholder="Pass123"
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="formElement"
+    >
+      <label
+        htmlFor="confirmPass"
+      >
+        Confirm Password
+      </label>
+      <input
+        autoComplete="confirmPass"
+        id="confirmPass"
+        name="confirmPass"
+        onChange={[Function]}
+        placeholder="Pass123"
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="submit"
+      type="submit"
+    >
+      Sign up
+    </button>
+  </fieldset>
+  <p
+    className="loginTag"
+  >
+    Already have an account? 
+    <a
+      href="/login"
+      onClick={[Function]}
+    >
+      Log in!
+    </a>
+  </p>
+</form>
+`;
