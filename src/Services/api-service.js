@@ -6,10 +6,10 @@ const ApiService = {
     return fetch(`${config.API_ENDPOINT}/bookmarks`, {
       headers: {
         'content-type': 'application/json',
-        Authorization: TokenService.getAuthToken(),
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
-    }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
 
@@ -18,11 +18,11 @@ const ApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        Authorization: TokenService.getAuthToken(),
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({ bookmark }),
-    }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
 
@@ -31,11 +31,11 @@ const ApiService = {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
-        Authorization: TokenService.getAuthToken(),
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({ updated }),
-    }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
 
@@ -44,10 +44,10 @@ const ApiService = {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
-        Authorization: TokenService.getAuthToken(),
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
-    }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : undefined
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : undefined
     );
   },
 };
