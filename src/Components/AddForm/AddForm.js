@@ -5,7 +5,7 @@ import { MdCancel, MdSave } from 'react-icons/md';
 import isUrl from 'isurl';
 
 export default function AddForm(props) {
-  const [error, setError] = useState(null); // Do I need to make another piece of state here? Could there be a"global error" in this case?
+  const [error, setError] = useState(null);
 
   async function handleSubmit(e) {
     try {
@@ -79,7 +79,7 @@ export default function AddForm(props) {
         </div>
         {error && (
           <>
-            <p style={{ color: 'white' }}>{error.message}</p>
+            <p className={s.error}>{error.message}</p>
           </>
         )}
         <div className={s.formControls}>
