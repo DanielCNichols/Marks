@@ -11,7 +11,6 @@ export default function EditForm({ bookmark, updateBookmark, toggleEdit }) {
   );
 
   async function handleEditSubmit(id, updated) {
-    console.log(updated);
     try {
       let res = await ApiService.editBookmark(id, updated);
       updateBookmark(res);
