@@ -24,6 +24,7 @@ const useEditForm = (bookmark, callback, validation) => {
     desc: bookmark.desc,
     rating: bookmark.rating,
     title: bookmark.title,
+    userId: bookmark.userId,
   });
 
   const [inputErrors, setInputErrors] = useState({});
