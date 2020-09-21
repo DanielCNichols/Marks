@@ -37,7 +37,7 @@ exports[`Add form tests renders the UI as expected 1`] = `
       </label>
       <input
         aria-label="Url"
-        aria-placehder="https://www.reddit.com"
+        aria-placeholder="https://www.reddit.com"
         aria-required="true"
         id="url"
         name="url"

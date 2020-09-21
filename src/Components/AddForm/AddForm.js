@@ -59,7 +59,7 @@ export default function AddForm(props) {
             name="url"
             id="url"
             placeholder="https://www.reddit.com"
-            aria-placehder="https://www.reddit.com"
+            aria-placeholder="https://www.reddit.com"
             aria-required="true"
             aria-label="Url"
           />

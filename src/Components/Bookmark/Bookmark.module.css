@@ -183,7 +183,7 @@ r {
 @media screen and (min-width: 800px) {
   .bookmarkItem {
     width: 85%;
-    max-width: 400px;
+    max-width: 355px;
     min-width: 355px;
     grid-template-columns: 30% 70%;
     margin: 25px auto;
@@ -191,9 +191,9 @@ r {
 
   .bookmarkItemExpanded {
     width: 85%;
-    max-width: 400px;
+    max-width: 355px;
     min-width: 355px;
-    margin: 25px 0;
+    margin: 25px auto;
   }
 
   .itemControlsContainer {
