@@ -12,38 +12,51 @@ exports[`Add form tests renders the UI as expected 1`] = `
     <div
       className="formElement"
     >
-      <label>
+      <label
+        htmlFor="title"
+      >
         Title
       </label>
       <input
         aria-label="Title"
+        aria-placeholder="Reddit"
         aria-required="true"
+        id="title"
         name="title"
+        placeholder="Reddit"
         type="text"
       />
     </div>
     <div
       className="formElement"
     >
-      <label>
+      <label
+        htmlFor="url"
+      >
         Url
       </label>
       <input
         aria-label="Url"
+        aria-placehder="https://www.reddit.com"
         aria-required="true"
+        id="url"
         name="url"
+        placeholder="https://www.reddit.com"
         type="text"
       />
     </div>
     <div
       className="formElement"
     >
-      <label>
+      <label
+        htmlFor="rating"
+      >
         Rating
       </label>
       <select
         aria-label="Select Rating"
         aria-required="false"
+        id="rating"
         name="rating"
       >
         <option
@@ -76,14 +89,18 @@ exports[`Add form tests renders the UI as expected 1`] = `
     <div
       className="formElement"
     >
-      <label>
+      <label
+        htmlFor="description"
+      >
         Description
       </label>
       <textarea
         aria-label="Description"
+        aria-placeholder="This is the best website ever."
         aria-required="false"
-        id="desc"
+        id="description"
         name="desc"
+        placeholder="This is the best website ever."
         rows="5"
       />
     </div>

@@ -35,7 +35,9 @@ export default function RegistrationForm(props) {
         <div className={s.formElement}>
           <label htmlFor="username">Username</label>
           {inputErrors.username && (
-            <p className={s.error}>{inputErrors.username}</p>
+            <p aria-live="assertive" className={s.error}>
+              {inputErrors.username}
+            </p>
           )}
           <input
             type="text"
@@ -44,6 +46,8 @@ export default function RegistrationForm(props) {
             onChange={handleChange}
             value={inputs.username}
             placeholder="markit146"
+            aria-placeholder="markit146"
+            aria-required="true"
             autoComplete="username"
           />
         </div>
@@ -58,14 +62,18 @@ export default function RegistrationForm(props) {
             id="password"
             onChange={handleChange}
             value={inputs.password}
+            aria-required="true"
             placeholder="Pass123"
+            aria-placeholder="Pass123"
             autoComplete="password"
           />
         </div>
         <div className={s.formElement}>
           <label htmlFor="confirmPass">Confirm Password</label>
           {inputErrors.confirmPass && (
-            <p className={s.error}>{inputErrors.confirmPass}</p>
+            <p aria-live="assertive" className={s.error}>
+              {inputErrors.confirmPass}
+            </p>
           )}
           <input
             type="password"
@@ -73,13 +81,15 @@ export default function RegistrationForm(props) {
             id="confirmPass"
             onChange={handleChange}
             value={inputs.confirmPass}
+            aria-required="true"
             placeholder="Pass123"
+            aria-placeholder="Pass123"
             autoComplete="confirmPass"
           />
         </div>
 
         {error && (
-          <div className={s.postError}>
+          <div aria-live="assertive" className={s.postError}>
             {Object.keys(error).map((e, idx) => {
               return (
                 <p className={s.error} key={idx}>

@@ -41,22 +41,34 @@ export default function AddForm(props) {
       <fieldset>
         <legend>Add Bookmark</legend>
         <div className={s.formElement}>
-          <label>Title</label>
+          <label htmlFor="title">Title</label>
           <input
+            id="title"
             type="text"
             name="title"
+            placeholder="Reddit"
+            aria-placeholder="Reddit"
             aria-required="true"
             aria-label="Title"
           />
         </div>
         <div className={s.formElement}>
-          <label>Url</label>
-          <input type="text" name="url" aria-required="true" aria-label="Url" />
+          <label htmlFor="url">Url</label>
+          <input
+            type="text"
+            name="url"
+            id="url"
+            placeholder="https://www.reddit.com"
+            aria-placehder="https://www.reddit.com"
+            aria-required="true"
+            aria-label="Url"
+          />
         </div>
         <div className={s.formElement}>
-          <label>Rating</label>
+          <label htmlFor="rating">Rating</label>
           <select
             name="rating"
+            id="rating"
             aria-required="false"
             aria-label="Select Rating"
           >
@@ -68,19 +80,21 @@ export default function AddForm(props) {
           </select>
         </div>
         <div className={s.formElement}>
-          <label>Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
+            id="description"
             name="desc"
             rows="5"
-            id="desc"
+            placeholder="This is the best website ever."
+            aria-placeholder="This is the best website ever."
             aria-required="false"
             aria-label="Description"
           />
         </div>
         {error && (
-          <>
+          <div role="alert" aria-live="assertive">
             <p className={s.error}>{error.message}</p>
-          </>
+          </div>
         )}
         <div className={s.formControls}>
           <button className={s.cancel} type="button" onClick={addToggle}>

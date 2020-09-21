@@ -3,6 +3,7 @@ import Bookmark from '../Bookmark/Bookmark';
 import AddForm from '../AddForm/AddForm';
 import Button from '../Button/Button';
 import ApiService from '../../Services/api-service';
+import Loading from '../Loading/Loading';
 import BookmarkControls from '../BookmarkControls/BookmarkControls';
 import s from './BookmarksList.module.css';
 
@@ -10,12 +11,14 @@ export default function BookmarksList(props) {
   const [bookmarks, setBookmarks] = useState([]);
   const [adding, setAdding] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   //IDEA: Pass in filter value (or null, if initial load) to get bookmarks. Backend handles filtering through conditions in the route.
   useEffect(() => {
     ApiService.getBookmarks()
       .then(res => {
         setBookmarks(res);
+        setLoading(false);
       })
       .catch(error => {
         setError(error);
@@ -50,38 +53,44 @@ export default function BookmarksList(props) {
   };
 
   return (
-    <div className={s.BookmarksList}>
-      {error && <p>{error}</p>}
-      <div className="add">
-        {adding === true ? (
-          <AddForm addToggle={addToggle} addBookmark={addBookmark} />
-        ) : null}
-      </div>
-
-      {!adding ? (
-        <>
-          <div className={s.control}>
-            <BookmarkControls sort={sortBookmarks} />
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className={s.BookmarksList}>
+          {error && <p>{error}</p>}
+          <div className="add">
+            {adding === true ? (
+              <AddForm addToggle={addToggle} addBookmark={addBookmark} />
+            ) : null}
           </div>
-          {!bookmarks.length ? (
-            <>
-              <p>You haven't added any bookmarks yet. </p>
-              <p>Tap the green button to get started!</p>
-            </>
-          ) : (
-            bookmarks.map(mark => (
-              <Bookmark
-                key={mark._id}
-                bookmark={mark}
-                updateBookmark={updateBookmark}
-                removeBookmark={removeBookmark}
-              />
-            ))
-          )}
-        </>
-      ) : null}
 
-      {!adding ? <Button toggleAdd={addToggle}></Button> : null}
-    </div>
+          {!adding ? (
+            <>
+              <div className={s.control}>
+                <BookmarkControls sort={sortBookmarks} />
+              </div>
+              {!bookmarks.length ? (
+                <>
+                  <p>You haven't added any bookmarks yet. </p>
+                  <p>Tap the green button to get started!</p>
+                </>
+              ) : (
+                bookmarks.map(mark => (
+                  <Bookmark
+                    key={mark._id}
+                    bookmark={mark}
+                    updateBookmark={updateBookmark}
+                    removeBookmark={removeBookmark}
+                  />
+                ))
+              )}
+            </>
+          ) : null}
+
+          {!adding ? <Button toggleAdd={addToggle}></Button> : null}
+        </div>
+      )}
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useEditForm, validationRules } from '../../Hooks/useEditForm';
 import ApiService from '../../Services/api-service';
 import s from './EditForm.module.css';
@@ -27,6 +27,10 @@ export default function EditForm({ bookmark, updateBookmark, toggleEdit }) {
           <label htmlFor="title">Title</label>
           {inputErrors.title && <p className={s.error}>{inputErrors.title}</p>}
           <input
+            id="title"
+            placeholder="Reddit"
+            aria-placeholder="Reddit"
+            aria-required="true"
             name="title"
             onChange={handleChange}
             value={inputs.title}
@@ -35,7 +39,12 @@ export default function EditForm({ bookmark, updateBookmark, toggleEdit }) {
         </div>
         <div className={s.editRating}>
           <label htmlFor="rating">Rating</label>
-          <select name="rating" onChange={handleChange} value={inputs.rating}>
+          <select
+            id="rating"
+            name="rating"
+            onChange={handleChange}
+            value={inputs.rating}
+          >
             <option value="">Rating</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -48,7 +57,11 @@ export default function EditForm({ bookmark, updateBookmark, toggleEdit }) {
           <label htmlFor="url">Url</label>
           {inputErrors.url && <p className={s.error}>{inputErrors.url}</p>}
           <input
+            id="url"
             name="url"
+            placeholder="https://www.reddit.com"
+            aria-placeholder="https://www.reddit.com"
+            aria-required="true"
             onChange={handleChange}
             value={inputs.url}
             type="text"
@@ -56,9 +69,12 @@ export default function EditForm({ bookmark, updateBookmark, toggleEdit }) {
         </div>
 
         <div className={s.editDesc}>
-          <label htmlFor="desc">Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
             name="desc"
+            id="description"
+            placeholder="This is the best website ever"
+            aria-placeholder="This is the best website ever"
             onChange={handleChange}
             value={inputs.desc}
             className={s.desc}

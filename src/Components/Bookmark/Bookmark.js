@@ -4,7 +4,6 @@ import { TiArrowForward } from 'react-icons/ti';
 import ApiService from '../../Services/api-service';
 import RatingSpan from '../RatingSpan/RatingSpan';
 import s from './Bookmark.module.css';
-import { useEditForm, validationRules } from '../../Hooks/useEditForm';
 import EditForm from '../EditForm/EditForm';
 
 export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
@@ -23,10 +22,10 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
     setEditing(!editing);
   };
 
-  const deleteBookmark = (id) => {
+  const deleteBookmark = id => {
     ApiService.deleteBookmark(id)
       .then(removeBookmark(id))
-      .catch((error) => setError(error));
+      .catch(error => setError(error));
   };
 
   const renderCollapsed = () => {
@@ -45,7 +44,7 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
               <MdEdit onClick={toggleEdit} />
               <span className={s.tooltiptext}>Edit</span>
             </div>
-            <div className='tooltip delete'>
+            <div className="tooltip delete">
               <MdDelete
                 onClick={() => {
                   deleteBookmark(_id);
@@ -55,8 +54,8 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
             </div>
             <div className={s.tooltip}>
               <a
-                rel='noopener noreferrer'
-                target='_blank'
+                rel="noopener noreferrer"
+                target="_blank"
                 href={url}
                 className={s.linkButton}
               >
@@ -109,8 +108,8 @@ export default function Bookmark({ bookmark, removeBookmark, updateBookmark }) {
             </div>
             <div className={s.tooltip}>
               <a
-                rel='noopener noreferrer'
-                target='_blank'
+                rel="noopener noreferrer"
+                target="_blank"
                 href={url}
                 className={s.linkButton}
               >

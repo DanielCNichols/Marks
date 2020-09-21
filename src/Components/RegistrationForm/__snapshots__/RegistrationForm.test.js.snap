@@ -18,6 +18,8 @@ exports[`Registration Form tests renders the UI as expected 1`] = `
         Username
       </label>
       <input
+        aria-placeholder="markit146"
+        aria-required="true"
         autoComplete="username"
         id="username"
         name="username"
@@ -36,6 +38,8 @@ exports[`Registration Form tests renders the UI as expected 1`] = `
         Password
       </label>
       <input
+        aria-placeholder="Pass123"
+        aria-required="true"
         autoComplete="password"
         id="password"
         name="password"
@@ -54,6 +58,8 @@ exports[`Registration Form tests renders the UI as expected 1`] = `
         Confirm Password
       </label>
       <input
+        aria-placeholder="Pass123"
+        aria-required="true"
         autoComplete="confirmPass"
         id="confirmPass"
         name="confirmPass"

@@ -37,6 +37,9 @@ export default function LoginForm(props) {
             type="text"
             name="username"
             id="username"
+            placeholder="daniel61"
+            aria-placeholder="daniel61"
+            aria-required="true"
             onChange={handleChange}
             value={inputs.username}
           />
@@ -50,6 +53,10 @@ export default function LoginForm(props) {
             type="password"
             name="password"
             id="password"
+            placeholder="Pass123"
+            aria-placeholder="Pass123"
+            autoComplete="password"
+            aria-required="true"
             onChange={handleChange}
             value={inputs.password}
           />

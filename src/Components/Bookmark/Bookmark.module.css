@@ -186,7 +186,7 @@ r {
     max-width: 400px;
     min-width: 355px;
     grid-template-columns: 30% 70%;
-    margin: 25px 0;
+    margin: 25px auto;
   }
 
   .bookmarkItemExpanded {

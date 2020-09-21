@@ -15,8 +15,12 @@ exports[`EditForm tests renders the UI as expected 1`] = `
         Title
       </label>
       <input
+        aria-placeholder="Reddit"
+        aria-required="true"
+        id="title"
         name="title"
         onChange={[Function]}
+        placeholder="Reddit"
         type="text"
         value="test title"
       />
@@ -30,6 +34,7 @@ exports[`EditForm tests renders the UI as expected 1`] = `
         Rating
       </label>
       <select
+        id="rating"
         name="rating"
         onChange={[Function]}
         value={3}
@@ -75,8 +80,12 @@ exports[`EditForm tests renders the UI as expected 1`] = `
         Url
       </label>
       <input
+        aria-placeholder="https://www.reddit.com"
+        aria-required="true"
+        id="url"
         name="url"
         onChange={[Function]}
+        placeholder="https://www.reddit.com"
         type="text"
         value="https://www.twitter.com"
       />
@@ -85,14 +94,17 @@ exports[`EditForm tests renders the UI as expected 1`] = `
       className="editDesc"
     >
       <label
-        htmlFor="desc"
+        htmlFor="description"
       >
         Description
       </label>
       <textarea
+        aria-placeholder="This is the best website ever"
         className="desc"
+        id="description"
         name="desc"
         onChange={[Function]}
+        placeholder="This is the best website ever"
         value="A test bookmark"
       />
     </div>
