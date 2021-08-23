@@ -8,8 +8,8 @@ const ApiService = {
         'content-type': 'application/json',
         Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
@@ -21,8 +21,8 @@ const ApiService = {
         Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({ bookmark }),
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
@@ -34,8 +34,8 @@ const ApiService = {
         Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({ updated }),
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
@@ -46,8 +46,8 @@ const ApiService = {
         'content-type': 'application/json',
         Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : undefined
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : undefined
     );
   },
 };

@@ -11,9 +11,9 @@ import NavBar from './Components/NavBar/NavBar';
 
 function App() {
   return (
-    <div className="App" aria-live="polite">
+    <div className='App' aria-live='polite'>
       <NavBar />
-      <main aria-live="polite">
+      <main aria-live='polite'>
         <Switch>
           <PublicRoute exact path={'/'} component={LandingPage} />
           <PublicRoute exact path={'/login'} component={Login} />
